@@ -22,11 +22,12 @@ $anio = date('Y'); // Año
 $fecha = $nombreDias[date('w')] . ', ' . $dia . ' de ' . $nombreMeses[$mes - 1] . ' de ' . $anio;
 $pdf->Cell(0, 10, 'Fecha: ' . $fecha, 0, 1, 'R');
 
-// Agregar el asunto
-$pdf->Cell(0, 10, 'Asunto: Solicitud del auditorio de la casa Barrial', 0, 1, 'L');
+// Agregar el asunto alineado a la derecha
+$pdf->Cell(0, 10, 'Carta :', 0, 1, 'R');
+
 
 // Agregar saltos de línea
-$pdf->Ln(50); // 5 saltos de línea
+$pdf->Ln(30); // 5 saltos de línea
 
 // Agregar "SR:" y los datos del formulario (nombre)
 $nombre = $_POST['nombres']; // Asegúrate de obtener el valor del formulario adecuadamente
@@ -52,9 +53,6 @@ $pdf->MultiCell(0, 10, $textoCuerpo, 0, 'J');
 // Centrar la imagen de la firma
 $pdf->Image('assets/images/firma.png', 75, $pdf->GetY() + 20, 50);
 
-// Agregar la palabra "Firma" debajo de la imagen
-$pdf->SetX(85);
-$pdf->Cell(50, 90, 'Firma', 0, 1, 'C');
 
 // Salida del PDF
 $pdf->Output();
