@@ -31,9 +31,7 @@ $host = "localhost";
 $tipoDocumento = isset($_POST['tipoDocumento']) ? $_POST['tipoDocumento'] : '';
 $observacionesFormulario = isset($_POST['Observaciones']) ? $_POST['Observaciones'] : '';
 
-// Validar que 'tipoDocumento' no esté vacío
-if (!empty($tipoDocumento)) {
-    // Intentar establecer la conexión
+
     $conexion = new mysqli($host, $usuario, $contrasena, $base_de_datos);
 
     // Verificar si la conexión fue exitosa
@@ -78,8 +76,6 @@ if (!empty($tipoDocumento)) {
         $stmt->close();
         $conexion->close();
     }
-} else {
-    echo "Tipo de Documento no válido o no se proporcionó.";
-}
+
 ?>
 
