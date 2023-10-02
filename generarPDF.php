@@ -32,9 +32,18 @@ $pdf->Ln(50); // 5 saltos de línea
 $nombre = $_POST['nombres']; // Asegúrate de obtener el valor del formulario adecuadamente
 $pdf->Cell(0, 10, 'SR: ' . $nombre, 0, 1, 'L');
 
+// Texto justificado
+$textoJustificado = "Apreciable Sr. Trinquete Chanchullo, por medio de este oficio se le hace comunicación de la resolución de la junta directiva de esta empresa, en relación a su comportamiento y manejo de los recursos económicos de la sucursal bajo su cargo. Según los reportes anteriores que hemos tenido, aunadas a las quejas de malos tratos recibidos por usted por parte de sus subordinados, comunicándole el dictamen de la junta directiva, consistente en la resolución de separarlo del cargo que ostenta dentro de esta empresa y pedirle su renuncia.";
+
+// Agregar el texto justificado
+$pdf->MultiCell(0, 10, $textoJustificado, 0, 'J');
+
+// Agregar "Requiero:" y los datos del formulario (Requerimiento)
+$requerimiento = $_POST['Requerimiento']; // Asegúrate de obtener el valor del formulario adecuadamente
+$pdf->Cell(0, 10, 'Requiero: ' . $requerimiento, 0, 1, 'L');
+
 // Texto del cuerpo de la carta
-$textoCuerpo = "Requiero: " . $_POST['Requerimiento'] . "\n\n";
-$textoCuerpo .= "Adjuntando documentos que prueban diversos malos manejos, así como se adjuntan testimonios respectivos a los malos tratos.\n";
+$textoCuerpo = "Adjuntando documentos que prueban diversos malos manejos, así como se adjuntan testimonios respectivos a los malos tratos.\n";
 $textoCuerpo .= "Atentamente";
 
 // Agregar el texto del cuerpo de la carta
@@ -44,7 +53,7 @@ $pdf->MultiCell(0, 10, $textoCuerpo, 0, 'J');
 $pdf->Image('assets/images/firma.png', 75, $pdf->GetY() + 20, 50);
 
 // Agregar la palabra "Firma" debajo de la imagen
-$pdf->SetX(75);
+$pdf->SetX(85);
 $pdf->Cell(50, 10, 'Firma', 0, 1, 'C');
 
 // Salida del PDF
