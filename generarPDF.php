@@ -1,85 +1,56 @@
 <?php
+// Incluye la biblioteca FPDF
 require('fpdf/fpdf.php');
 
-class PDF extends FPDF {
-    // Función para el encabezado
-    function Header() {
-        $this->SetFont('Arial', '', 12);
-        $this->SetXY(0, 10);
-        $this->Cell(210, 10, utf8_decode('Año de la unidad, la paz y el desarrollo'), 0, 1, 'C');
-    }
-    // Función para el pie de página
-    function Footer() {
-        // Establecer la posición a 1.5 cm desde el final de la página
-        $this->SetY(-15);
-        // Configurar fuente y tamaño para la fecha
-        $this->SetFont('Arial', 'I', 8);
-        // Imprimir la fecha actual en la parte inferior
-        date_default_timezone_set('America/Lima');
-        $fechaActual = date('Y-m-d H:i:s');
-        $this->Cell(0, 10, 'Fecha: ' . $fechaActual, 0, 0, 'C');
-    }
+// Configura la conexión a la base de datos
+$usuario = 'u291982824_test';
+$contraseña = '21.17.Audra';
+$base_de_datos = 'u291982824_test';
+$localhost = 'localhost';
+
+// Conecta a la base de datos
+$conexion = mysqli_connect($localhost, $usuario, $contraseña, $base_de_datos);
+
+// Verifica si la conexión fue exitosa
+if (!$conexion) {
+    die("Error de conexión: " . mysqli_connect_error());
 }
 
-// Establecer conexión a la base de datos
-$usuario = "u291982824_test";
-$contrasena = "21.17.Audra";
-$base_de_datos = "u291982824_test";
-$host = "localhost";
+// Obtiene el valor del campo "tipoDocumento" del formulario
+$tipoDocumento = $_POST['tipoDocumento'];
 
-// Obtener el valor del 'tipoDocumento' y 'Observaciones' enviados desde el formulario
-$tipoDocumento = isset($_POST['tipoDocumento']) ? $_POST['tipoDocumento'] : '';
-$observacionesFormulario = isset($_POST['Observaciones']) ? $_POST['Observaciones'] : '';
+// Consulta la base de datos para obtener los datos correspondientes al tipo de documento
+$sql = "SELECT nombreDocumento FROM documento WHERE id = $tipoDocumento";
+$resultado = mysqli_query($conexion, $sql);
 
-// Validar que 'tipoDocumento' no esté vacío
-if (!empty($tipoDocumento)) {
-    // Intentar establecer la conexión
-    $conexion = new mysqli($host, $usuario, $contrasena, $base_de_datos);
-
-    // Verificar si la conexión fue exitosa
-    if ($conexion->connect_error) {
-        die("Error en la conexión a la base de datos: " . $conexion->connect_error);
-    } else {
-        // Consultar la base de datos para obtener el nombreDocumento
-        $consulta = "SELECT nombreDocumento, Observacion FROM documento WHERE id = ?";
-        $stmt = $conexion->prepare($consulta);
-        $stmt->bind_param("i", $tipoDocumento); // "i" indica que se espera un valor entero
-        $stmt->execute();
-        $stmt->bind_result($nombreDocumento, $observacion);
-
-        // Crear un nuevo objeto PDF
-        $pdf = new PDF();
-        $pdf->AddPage();
-
-        // Agregar estilo CSS para centrar y justificar texto
-        $pdf->SetFont('Arial', 'B', 16);
-        $pdf->Cell(0, 10, 'Tipo de Documento (formulario):', 0, 1, 'C');
-        $pdf->SetFont('Arial', '', 12);
-        
-        // Obtener el nombre del documento correspondiente al ID
-        $pdf->MultiCell(0, 10, $nombreDocumento, 0, 'C');
-
-        $pdf->SetFont('Arial', 'B', 16);
-        $pdf->Cell(0, 10, 'Observaciones (formulario):', 0, 1);
-        $pdf->SetFont('Arial', '', 12);
-        $pdf->MultiCell(0, 10, $observacionesFormulario); // Muestra las observaciones del formulario
-
-        // Calcular la posición X para centrar la imagen en el eje horizontal
-        $imageWidth = 50; // Ancho de la imagen en puntos
-        $pageWidth = $pdf->GetPageWidth(); // Ancho de la página en puntos
-        $imageX = ($pageWidth - $imageWidth) / 2;
-
-        $pdf->Image('assets/images/firma.png', $imageX, $pdf->GetY() + 10, $imageWidth); // Centra la imagen horizontalmente
-
-        // Salida del PDF
-        $pdf->Output();
-
-        // Cerrar la conexión y liberar recursos
-        $stmt->close();
-        $conexion->close();
-    }
+if (mysqli_num_rows($resultado) > 0) {
+    $fila = mysqli_fetch_assoc($resultado);
+    $nombreDocumento = $fila['nombreDocumento'];
 } else {
-    echo "Tipo de Documento no válido o no se proporcionó.";
+    $nombreDocumento = "Documento no encontrado";
 }
-?>
 
+// Obtiene las observaciones adicionales del formulario
+$observaciones = $_POST['observacionesAdicionales'];
+
+// Inicializa la clase FPDF
+$pdf = new FPDF();
+$pdf->AddPage();
+
+// Agrega el título (nombre del documento)
+$pdf->SetFont('Arial', 'B', 16);
+$pdf->Cell(0, 10, $nombreDocumento, 0, 1, 'C');
+
+// Agrega las observaciones
+$pdf->SetFont('Arial', '', 12);
+$pdf->MultiCell(0, 10, $observaciones);
+
+// Agrega la imagen
+$pdf->Image('assets/images/firma.png', 10, $pdf->GetY() + 10, 50);
+
+// Genera el PDF en una nueva ventana o pestaña
+$pdf->Output('_blank');
+
+// Cierra la conexión a la base de datos
+mysqli_close($conexion);
+?>
