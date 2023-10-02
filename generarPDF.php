@@ -13,10 +13,9 @@ $nombreDias = array('Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viern
 $nombreMeses = array('enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre');
 
 // Agregar la imagen "antamina.jpg" alineada a la derecha
-$pdf->Image('assets/images/antamina.jpg', null, null, 100); // Ajusta el ancho (100) según tus necesidades
-
-// Agregar el texto centrado debajo de la imagen
-$pdf->SetY(80); // Ajusta la posición vertical según tus necesidades
+$pdf->Image('assets/images/antamina.jpg', $pdf->GetX() + 150, $pdf->GetY(), 20); // Ajusta la posición y el ancho según tus necesidades
+// Ajusta el ancho (100) según tus necesidades
+$pdf->SetY($pdf->GetY() + 20); // Ajusta la posición vertical según tus necesidades
 $pdf->Cell(0, 10, utf8_decode('Año de la unidad, la paz y el desarrollo'), 0, 1, 'C');
 
 // Obtener la fecha actual en la zona horaria de Perú
