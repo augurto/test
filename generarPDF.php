@@ -22,7 +22,8 @@ class PDF extends FPDF {
         $this->Cell(0, 10, 'Fecha: ' . $fechaActual, 0, 0, 'C');
     }
 }
-
+date_default_timezone_set('America/Lima');
+$fechaActual = date('Y-m-d H:i:s');
 // Establecer conexión a la base de datos
 $usuario = "u291982824_test";
 $contrasena = "21.17.Audra";
