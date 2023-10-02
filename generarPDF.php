@@ -8,11 +8,18 @@ $pdf->AddPage();
 // Configurar la fuente y el tamaño
 $pdf->SetFont('Arial', '', 12);
 
+// Días de la semana y meses en español
+$nombreDias = array('Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado');
+$nombreMeses = array('enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre');
+
 // Obtener la fecha actual en la zona horaria de Perú
 date_default_timezone_set('America/Lima');
-$fecha = strftime('%d de %B de %Y');
+$dia = date('j'); // Día del mes sin ceros iniciales
+$mes = date('n'); // Mes numérico
+$anio = date('Y'); // Año
 
-// Agregar la fecha
+// Agregar la fecha en formato "día, nombre del mes y año"
+$fecha = $nombreDias[date('w')] . ', ' . $dia . ' de ' . $nombreMeses[$mes - 1] . ' de ' . $anio;
 $pdf->Cell(0, 10, 'Fecha: ' . $fecha, 0, 1, 'R');
 
 // Agregar el asunto
@@ -33,11 +40,12 @@ $textoCuerpo .= "Atentamente";
 // Agregar el texto del cuerpo de la carta
 $pdf->MultiCell(0, 10, $textoCuerpo, 0, 'J');
 
-// Agregar la imagen de la firma
-$pdf->Image('assets/images/firma.png', 10, $pdf->GetY() + 10, 50);
+// Centrar la imagen de la firma
+$pdf->Image('assets/images/firma.png', 75, $pdf->GetY() + 20, 50);
 
-// Agregar el texto "Firma" debajo de la imagen
-$pdf->Cell(0, 10, 'Firma', 0, 1, 'C');
+// Agregar la palabra "Firma" debajo de la imagen
+$pdf->SetX(75);
+$pdf->Cell(50, 10, 'Firma', 0, 1, 'C');
 
 // Salida del PDF
 $pdf->Output();
