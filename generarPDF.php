@@ -63,7 +63,7 @@ if (!empty($tipoDocumento)) {
         $pdf->SetFont('Arial', 'B', 16);
         $pdf->Cell(0, 10, 'Observaciones (formulario):', 0, 1);
         $pdf->SetFont('Arial', '', 12);
-        $pdf->MultiCell(0, 10, $observacionesFormulario); // Muestra las observaciones del formulario
+        $pdf->MultiCell(0, 10, 'asdasdsad'); // Muestra las observaciones del formulario
 
         // Calcular la posición X para centrar la imagen en el eje horizontal
         $imageWidth = 50; // Ancho de la imagen en puntos
