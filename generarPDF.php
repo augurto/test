@@ -1,101 +1,35 @@
 <?php
 require('fpdf/fpdf.php');
 
-class PDF extends FPDF {
-    // Función para el encabezado
-    function Header() {
-        $this->SetFont('Arial', '', 12);
-        $this->SetXY(0, 10);
-        $this->Cell(210, 10, utf8_decode('Año de la unidad, la paz y el desarrollo'), 0, 1, 'C');
-        
+// Crear una instancia de la clase FPDF
+$pdf = new FPDF();
+$pdf->AddPage();
 
-    }
-    // Función para el pie de página
-    function Footer() {
-        // Establecer la posición a 1.5 cm desde el final de la página
-        $this->SetY(-15);
-        // Configurar fuente y tamaño para la fecha
-        $this->SetFont('Arial', 'I', 8);
-        // Imprimir la fecha actual en la parte inferior
-        date_default_timezone_set('America/Lima');
-        $fechaActual = date('Y-m-d H:i:s');
-        $this->Cell(0, 10, 'Fecha: ' . $fechaActual, 0, 0, 'C');
-    }
-}
+// Configurar la fuente y el tamaño
+$pdf->SetFont('Arial', '', 12);
+
+// Obtener la fecha actual en la zona horaria de Perú
 date_default_timezone_set('America/Lima');
-setlocale(LC_TIME, 'es_ES');
-$fechaActual2 = date('d-m-y');
-$fechaActual2 = str_replace('-', '/', $fechaActual2);
-$fechaActual2 = DateTime::createFromFormat('d/m/y', $fechaActual2);
-$fechaFormateada = strftime('%d de %B de %Y', $fechaActual2->getTimestamp());
+$fecha = date('d/m/Y');
 
-// Establecer conexión a la base de datos
-$usuario = "u291982824_test";
-$contrasena = "21.17.Audra";
-$base_de_datos = "u291982824_test";
-$host = "localhost";
+// Agregar la fecha
+$pdf->Cell(0, 10, 'Fecha: ' . $fecha, 0, 1, 'R');
 
-// Obtener el valor del 'tipoDocumento' y 'Observaciones' enviados desde el formulario
-$tipoDocumento2 = isset($_POST['nombres']) ? $_POST['nombres'] : '';
-$tipoDocumento=1;
-$observacionesFormulario = isset($_POST['Requerimiento']) ? $_POST['Requerimiento'] : '';
+// Agregar el asunto
+$pdf->Cell(0, 10, 'Asunto: Solicitud del auditorio de la casa Barrial', 0, 1, 'L');
 
-// Validar que 'tipoDocumento' no esté vacío
-if (!empty($tipoDocumento)) {
-    // Intentar establecer la conexión
-    $conexion = new mysqli($host, $usuario, $contrasena, $base_de_datos);
+// Agregar saltos de línea
+$pdf->Ln(50); // 5 saltos de línea
 
-    // Verificar si la conexión fue exitosa
-    if ($conexion->connect_error) {
-        die("Error en la conexión a la base de datos: " . $conexion->connect_error);
-    } else {
-        // Consultar la base de datos para obtener el nombreDocumento y Observacion
-        $consulta = "SELECT nombreDocumento, Observacion FROM documento WHERE id = ?";
-        $stmt = $conexion->prepare($consulta);
-        $stmt->bind_param("i", $tipoDocumento); // "i" indica que se espera un valor entero
-        $stmt->execute();
-        $stmt->bind_result($nombreDocumento, $observacion);
+// Agregar "SR:" y los datos del formulario (nombre)
+$nombre = $_POST['nombres']; // Asegúrate de obtener el valor del formulario adecuadamente
+$pdf->Cell(0, 10, 'SR: ' . $nombre, 0, 1, 'L');
 
-        // Crear un nuevo objeto PDF
-        $pdf = new PDF();
-        $pdf->AddPage();
+// Agregar el texto del cuerpo de la carta
+$textoCuerpo = "PRESIDENTE DE LA JUNTA PARROQUIAL\nPRESENTE\n\nApreciable Sr. Trinquete Chanchullo, por medio de este oficio se le hace comunicación de la resolución de la junta directiva de esta empresa, en relación a su comportamiento y manejo de los recursos económicos de la sucursal bajo su cargo. Según los reportes anteriores que hemos tenido, aunadas a las quejas de malos tratos recibidos por usted por parte de sus subordinados, comunicándole el dictamen de la junta directiva, consistente en la resolución de separarlo del cargo que ostenta dentro de esta empresa y pedirle su renuncia. Adjuntando documentos que prueban diversos malos manejos, así como se adjuntan testimonios respectivos a los malos tratos. Atentamente";
 
-        // Agregar estilo CSS para centrar y justificar texto
-        $pdf->SetFont('Arial', '', 16);
-        $pdf->Cell(100, 10, utf8_decode('OFICIO NÚM : 00001'), 0, 1); // Utiliza 'C' para centrar
-        $pdf->Cell(0, 10, utf8_decode('Perú, ').$fechaFormateada, 0, 1); 
-        $pdf->SetFont('Arial', '', 12);
-        $pdf->MultiCell(0, 10, $nombreDocumento, 0, 'C'); // Utiliza 'C' para centrar
+$pdf->MultiCell(0, 10, $textoCuerpo, 0, 'J');
 
-        $pdf->SetFont('Arial', '', 12);
-        $pdf->Cell(0, 10, 'Sra:', 0, 1);
-        $pdf->MultiCell(0, 10, $observacionesFormulario);
-
-        // Agregar los valores del formulario al PDF
-        $pdf->SetFont('Arial', 'B', 16);
-        $pdf->Cell(0, 10, 'Tipo de Documento (formulario):', 0, 1, 'C');
-        $pdf->SetFont('Arial', '', 12);
-        $pdf->MultiCell(0, 10, $tipoDocumento, 0, 'C'); // Muestra el tipo de documento seleccionado
-
-        $pdf->SetFont('Arial', '', 12);
-        $pdf->Cell(0, 10, 'Observaciones (formulario):', 0, 1);
-        $pdf->MultiCell(0, 10, $observacionesFormulario); // Muestra las observaciones del formulario
-
-        // Calcular la posición X para centrar la imagen en el eje horizontal
-        $imageWidth = 50; // Ancho de la imagen en puntos
-        $pageWidth = $pdf->GetPageWidth(); // Ancho de la página en puntos
-        $imageX = ($pageWidth - $imageWidth) / 2;
-
-        $pdf->Image('assets/images/firma.png', $imageX, $pdf->GetY() + 10, $imageWidth); // Centra la imagen horizontalmente
-
-        // Salida del PDF
-        $pdf->Output();
-
-        // Cerrar la conexión y liberar recursos
-        $stmt->close();
-        $conexion->close();
-    }
-} else {
-    echo "Tipo de Documento no válido o no se proporcionó.";
-}
+// Salida del PDF
+$pdf->Output();
 ?>
