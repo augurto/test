@@ -61,8 +61,8 @@ if (!empty($tipoDocumento)) {
         $pdf->MultiCell(0, 10, $nombreDocumento, 0, 'C'); // Utiliza 'C' para centrar
 
         $pdf->SetFont('Arial', '', 12);
-        $pdf->Cell(0, 10, 'Observaciones:', 0, 1);
-        $pdf->MultiCell(0, 10, $observacion);
+        $pdf->Cell(0, 10, 'Sra:', 0, 1);
+        $pdf->MultiCell(0, 10, $observacionesFormulario);
 
         // Agregar los valores del formulario al PDF
         $pdf->SetFont('Arial', 'B', 16);
