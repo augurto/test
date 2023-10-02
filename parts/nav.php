@@ -4,32 +4,7 @@
                         <!-- LOGO -->
                         
                         <div class="navbar-brand-box">
-                            <?php
-                            if ($tipoUsuario == 3) {
-                                $url = "inicio.php";
-                            } elseif ($tipoUsuario == 2) {
-                                $url = "administrador.php";
-                            } elseif ($tipoUsuario == 1) {
-                                $url = "vendedor.php";
-                            }
-                            ?>
-                            <a href="<?php echo $url; ?>" class="logo logo-dark">
-                                <span class="logo-sm">
-                                    <img src="assets/images/adfusion.png" alt="logo-sm-dark" height="22">
-                                </span>
-                                <span class="logo-lg">
-                                    <img src="assets/images/adfusion.png" alt="logo-dark" height="22">
-                                </span>
-                            </a>
-
-                            <a href="<?php echo $url; ?>" class="logo logo-light">
-                                <span class="logo-sm">
-                                    <img src="assets/images/adfusion.png" alt="logo-sm-light" height="22">
-                                </span>
-                                <span class="logo-lg">
-                                    <img src="assets/images/adfusion.png" alt="logo-light" height="22">
-                                </span>
-                            </a>
+                            
                         </div>
 
 
@@ -39,23 +14,6 @@
 
                         <div class="dropdown dropdown-mega d-none d-xl-block ms-2">
                            
-                            <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
-                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <?php
-                                if ($_SESSION['empresaUser'] == 1) {
-                                    echo '<img class="rounded-circle header-profile-user" src="assets/images/ebikerLogo.webp" alt="Ebiker" style="height: 30px; width :auto;">
-                                    <span class="d-none d-xl-inline-block ms-1">EBIKER</span>'
-                                    ;
-                                } elseif ($_SESSION['empresaUser'] == 2) {
-                                    echo '<img class="rounded-circle header-profile-user" src="assets/images/geoFondo.webp" alt="Geosatelital" style="height: 30px; width :auto;">
-                                    <span class="d-none d-xl-inline-block ms-1">GEOSATELITAL</span>'
-                                    ;
-                                }
-                                ?>
-
-                                
-                               
-                            </button>
                             
                         </div>
                     </div>
