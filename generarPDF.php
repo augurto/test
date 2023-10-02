@@ -30,7 +30,7 @@ $host = "localhost";
 // Obtener el valor del 'tipoDocumento' y 'Observaciones' enviados desde el formulario
 $tipoDocumento2 = isset($_POST['tipoDocumento']) ? $_POST['tipoDocumento'] : '';
 $tipoDocumento=1;
-$observacionesFormulario = isset($_POST['Observaciones']) ? $_POST['Observaciones'] : '';
+$observacionesFormulario = isset($_POST['Requerimiento']) ? $_POST['Requerimiento'] : '';
 
 // Validar que 'tipoDocumento' no esté vacío
 if (!empty($tipoDocumento)) {
