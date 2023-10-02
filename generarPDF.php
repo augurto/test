@@ -23,7 +23,12 @@ class PDF extends FPDF {
     }
 }
 date_default_timezone_set('America/Lima');
-$fechaActual2 = date('d-m-y ');
+
+$fechaActual2 = date('d-m-y');
+$fechaActual2 = str_replace('-', '/', $fechaActual2);
+$fechaActual2 = DateTime::createFromFormat('d/m/y', $fechaActual2);
+$fechaFormateada = strftime('%d de %B de %Y', $fechaActual2->getTimestamp());
+
 // Establecer conexión a la base de datos
 $usuario = "u291982824_test";
 $contrasena = "21.17.Audra";
@@ -58,7 +63,7 @@ if (!empty($tipoDocumento)) {
         // Agregar estilo CSS para centrar y justificar texto
         $pdf->SetFont('Arial', '', 16);
         $pdf->Cell(100, 10, utf8_decode('OFICIO NÚM : 00001'), 0, 1); // Utiliza 'C' para centrar
-        $pdf->Cell(0, 10, utf8_decode('Perú, ').$fechaActual2, 0, 1); 
+        $pdf->Cell(0, 10, utf8_decode('Perú, ').$fechaFormateada, 0, 1); 
         $pdf->SetFont('Arial', '', 12);
         $pdf->MultiCell(0, 10, $nombreDocumento, 0, 'C'); // Utiliza 'C' para centrar
 
