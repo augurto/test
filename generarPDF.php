@@ -55,6 +55,7 @@ $textoJustificado = "Apreciable Sr. Trinquete Chanchullo, por medio de este ofic
 
 // Agregar el texto justificado
 $pdf->MultiCell(0, 10, utf8_decode($textoJustificado), 0, 'J');
+$pdf->Ln(5); 
 
 // Agregar "Requiero:" y los datos del formulario (Requerimiento)
 $requerimiento = $_POST['Requerimiento']; // Asegúrate de obtener el valor del formulario adecuadamente
