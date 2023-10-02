@@ -55,8 +55,8 @@ if (!empty($tipoDocumento)) {
         $pdf->AddPage();
 
         // Agregar estilo CSS para centrar y justificar texto
-        $pdf->SetFont('Arial', 'B', 16);
-        $pdf->Cell(0, 10, 'OFICIO NÚM. 431/2016', 0, 1, 'C'); // Utiliza 'C' para centrar
+        $pdf->SetFont('Arial', '', 16);
+        $pdf->Cell(0, 10, utf8_decode('OFICIO NÚM : 00001'), 0, 1); // Utiliza 'C' para centrar
         $pdf->SetFont('Arial', '', 12);
         $pdf->MultiCell(0, 10, $nombreDocumento, 0, 'C'); // Utiliza 'C' para centrar
 
