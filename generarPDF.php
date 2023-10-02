@@ -40,7 +40,7 @@ if (!empty($tipoDocumento)) {
     if ($conexion->connect_error) {
         die("Error en la conexión a la base de datos: " . $conexion->connect_error);
     } else {
-        // Consultar la base de datos para obtener el nombreDocumento y Observacion
+        // Consultar la base de datos para obtener el nombreDocumento
         $consulta = "SELECT nombreDocumento, Observacion FROM documento WHERE id = ?";
         $stmt = $conexion->prepare($consulta);
         $stmt->bind_param("i", $tipoDocumento); // "i" indica que se espera un valor entero
@@ -53,22 +53,15 @@ if (!empty($tipoDocumento)) {
 
         // Agregar estilo CSS para centrar y justificar texto
         $pdf->SetFont('Arial', 'B', 16);
-        $pdf->Cell(0, 10, 'Tipo de Documento:', 0, 1, 'C'); // Utiliza 'C' para centrar
-        $pdf->SetFont('Arial', '', 12);
-        $pdf->MultiCell(0, 10, $nombreDocumento, 0, 'C'); // Utiliza 'C' para centrar
-
-        $pdf->SetFont('Arial', '', 12);
-        $pdf->Cell(0, 10, 'Observaciones:', 0, 1);
-        $pdf->MultiCell(0, 10, $observacion);
-
-        // Agregar los valores del formulario al PDF
-        $pdf->SetFont('Arial', 'B', 16);
         $pdf->Cell(0, 10, 'Tipo de Documento (formulario):', 0, 1, 'C');
         $pdf->SetFont('Arial', '', 12);
-        $pdf->MultiCell(0, 10, $tipoDocumento, 0, 'C'); // Muestra el tipo de documento seleccionado
+        
+        // Obtener el nombre del documento correspondiente al ID
+        $pdf->MultiCell(0, 10, $nombreDocumento, 0, 'C');
 
-        $pdf->SetFont('Arial', '', 12);
+        $pdf->SetFont('Arial', 'B', 16);
         $pdf->Cell(0, 10, 'Observaciones (formulario):', 0, 1);
+        $pdf->SetFont('Arial', '', 12);
         $pdf->MultiCell(0, 10, $observacionesFormulario); // Muestra las observaciones del formulario
 
         // Calcular la posición X para centrar la imagen en el eje horizontal
@@ -89,3 +82,4 @@ if (!empty($tipoDocumento)) {
     echo "Tipo de Documento no válido o no se proporcionó.";
 }
 ?>
+
