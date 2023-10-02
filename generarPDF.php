@@ -54,7 +54,7 @@ $pdf->Image('assets/images/firma.png', 75, $pdf->GetY() + 20, 50);
 
 // Agregar la palabra "Firma" debajo de la imagen
 $pdf->SetX(85);
-$pdf->Cell(50, 10, 'Firma', 0, 1, 'C');
+$pdf->Cell(80, 10, 'Firma', 0, 1, 'C');
 
 // Salida del PDF
 $pdf->Output();
