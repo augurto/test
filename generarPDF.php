@@ -28,9 +28,20 @@ $anio = date('Y'); // Año
 $fecha = $nombreDias[date('w')] . ', ' . $dia . ' de ' . $nombreMeses[$mes - 1] . ' de ' . $anio;
 $pdf->Cell(0, 10, 'Fecha: ' . $fecha, 0, 1, 'R');
 
-// Agregar el asunto alineado a la derecha
-$pdf->Cell(0, 10, 'Carta :', 0, 1, 'R');
+// Obtener la fecha actual en la zona horaria de Perú
+date_default_timezone_set('America/Lima');
+$dia2 = date('j'); // Día del mes sin ceros iniciales
+$mes2 = date('n'); // Mes numérico
+$anio2 = date('Y'); // Año
+$hora2 = date('H'); // Hora
+$minuto2 = date('i'); // Minuto
+$segundo2 = date('s'); // Segundo
 
+// Crear la variable con el formato deseado
+$cartaID = 'CA-' . $anio2 . $mes2 . $dia2 . $hora2 . $minuto2 . $segundo2;
+
+// Agregar el texto "Carta:" seguido de la variable $cartaID
+$pdf->Cell(0, 10, 'Carta: ' . $cartaID, 0, 1, 'R');
 
 // Agregar saltos de línea
 $pdf->Ln(30); // 5 saltos de línea
@@ -43,7 +54,7 @@ $pdf->Cell(0, 10, 'SR: ' . $nombre, 0, 1, 'L');
 $textoJustificado = "Apreciable Sr. Trinquete Chanchullo, por medio de este oficio se le hace comunicación de la resolución de la junta directiva de esta empresa, en relación a su comportamiento y manejo de los recursos económicos de la sucursal bajo su cargo. Según los reportes anteriores que hemos tenido, aunadas a las quejas de malos tratos recibidos por usted por parte de sus subordinados, comunicándole el dictamen de la junta directiva, consistente en la resolución de separarlo del cargo que ostenta dentro de esta empresa y pedirle su renuncia.";
 
 // Agregar el texto justificado
-$pdf->MultiCell(0, 10, $textoJustificado, 0, 'J');
+$pdf->MultiCell(0, 10, utf8_decode($textoJustificado), 0, 'J');
 
 // Agregar "Requiero:" y los datos del formulario (Requerimiento)
 $requerimiento = $_POST['Requerimiento']; // Asegúrate de obtener el valor del formulario adecuadamente
@@ -54,7 +65,7 @@ $textoCuerpo = "Adjuntando documentos que prueban diversos malos manejos, así c
 $textoCuerpo .= "Atentamente";
 
 // Agregar el texto del cuerpo de la carta
-$pdf->MultiCell(0, 10, $textoCuerpo, 0, 'J');
+$pdf->MultiCell(0, 10, utf8_decode($textoCuerpo), 0, 'J');
 
 // Centrar la imagen de la firma
 $pdf->Image('assets/images/firma.png', 75, $pdf->GetY() + 20, 50);
