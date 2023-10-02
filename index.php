@@ -72,11 +72,11 @@ include 'includes/conexion.php'; // Incluir el archivo de conexión
                                             <div class="col-sm-10">
                                                 <select class="form-select" name="tipoDocumento" aria-label="Selecciona el tipo de documento">
                                                     <option selected disabled>Selecciona un tipo de documento</option>
-                                                    <option value="Documento 1">Documento 1</option>
-                                                    <option value="Documento 2">Documento 2</option>
-                                                    <option value="Documento 3">Documento 3</option>
-                                                    <option value="Documento 4">Documento 4</option>
-                                                    <option value="Documento 5">Documento 5</option>
+                                                    <option value="1">Documento 1</option>
+                                                    <option value="2">Documento 2</option>
+                                                    <option value="3">Documento 3</option>
+                                                    <option value="4">Documento 4</option>
+                                                    <option value="5">Documento 5</option>
                                                 </select>
                                             </div>
                                         </div>

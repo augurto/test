@@ -21,29 +21,60 @@ class PDF extends FPDF {
     }
 }
 
-$pdf = new PDF();
-$pdf->AddPage();
+// Establecer conexión a la base de datos
+$usuario = "u291982824_test";
+$contrasena = "21.17.Audra";
+$base_de_datos = "u291982824_test";
+$host = "localhost";
 
-$tipoDocumento = isset($_POST['tipoDocumento']) ? $_POST['tipoDocumento'] : '';
-$observaciones = isset($_POST['Observaciones']) ? $_POST['Observaciones'] : ''; // Asegúrate de que el nombre del campo coincida con el formulario
+// Obtener el valor del 'id' enviado desde el formulario
+$id = isset($_POST['tipoDocumento']) ? $_POST['tipoDocumento'] : '';
 
-// Agregar estilo CSS para centrar y justificar texto
-$pdf->SetFont('Arial', 'B', 16);
-$pdf->Cell(0, 10, 'Tipo de Documento:', 0, 1, 'C'); // Utiliza 'C' para centrar
-$pdf->SetFont('Arial', '', 12);
-$pdf->MultiCell(0, 10, $tipoDocumento, 0, 'C'); // Utiliza 'C' para centrar
+// Validar que 'id' no esté vacío y sea un número entero
+if (!empty($id) && is_numeric($id)) {
+    // Intentar establecer la conexión
+    $conexion = new mysqli($host, $usuario, $contrasena, $base_de_datos);
 
-$pdf->SetFont('Arial', '', 12);
-$pdf->Cell(0, 10, 'Observaciones:', 0, 1);
-$pdf->MultiCell(0, 10, $observaciones);
+    // Verificar si la conexión fue exitosa
+    if ($conexion->connect_error) {
+        die("Error en la conexión a la base de datos: " . $conexion->connect_error);
+    } else {
+        // Consultar la base de datos para obtener el nombreDocumento y Observacion
+        $consulta = "SELECT nombreDocumento, Observacion FROM documento WHERE id = ?";
+        $stmt = $conexion->prepare($consulta);
+        $stmt->bind_param("i", $id); // "i" indica que se espera un valor entero
+        $stmt->execute();
+        $stmt->bind_result($nombreDocumento, $observacion);
 
-// Calcular la posición X para centrar la imagen en el eje horizontal
-$imageWidth = 50; // Ancho de la imagen en puntos
-$pageWidth = $pdf->GetPageWidth(); // Ancho de la página en puntos
-$imageX = ($pageWidth - $imageWidth) / 2;
+        // Crear un nuevo objeto PDF
+        $pdf = new PDF();
+        $pdf->AddPage();
 
-$pdf->Image('assets/images/firma.png', $imageX, $pdf->GetY() + 10, $imageWidth); // Centra la imagen horizontalmente
+        // Agregar estilo CSS para centrar y justificar texto
+        $pdf->SetFont('Arial', 'B', 16);
+        $pdf->Cell(0, 10, 'Tipo de Documento:', 0, 1, 'C'); // Utiliza 'C' para centrar
+        $pdf->SetFont('Arial', '', 12);
+        $pdf->MultiCell(0, 10, $nombreDocumento, 0, 'C'); // Utiliza 'C' para centrar
 
+        $pdf->SetFont('Arial', '', 12);
+        $pdf->Cell(0, 10, 'Observaciones:', 0, 1);
+        $pdf->MultiCell(0, 10, $observacion);
 
-$pdf->Output();
+        // Calcular la posición X para centrar la imagen en el eje horizontal
+        $imageWidth = 50; // Ancho de la imagen en puntos
+        $pageWidth = $pdf->GetPageWidth(); // Ancho de la página en puntos
+        $imageX = ($pageWidth - $imageWidth) / 2;
+
+        $pdf->Image('assets/images/firma.png', $imageX, $pdf->GetY() + 10, $imageWidth); // Centra la imagen horizontalmente
+
+        // Salida del PDF
+        $pdf->Output();
+
+        // Cerrar la conexión y liberar recursos
+        $stmt->close();
+        $conexion->close();
+    }
+} else {
+    echo "ID no válido o no se proporcionó un ID.";
+}
 ?>
