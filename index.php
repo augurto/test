@@ -68,7 +68,7 @@ include 'includes/conexion.php'; // Incluir el archivo de conexión
                                     <form id="documentoForm" action="generarPDF.php" method="POST"  target="_blank">
 
                                         <div class="row mb-3">
-                                            <label class="col-sm-2 col-form-label">Tipo de Documento</label>
+                                            <label class="col-sm-2 col-form-label">Nombres </label>
                                             <div class="col-sm-10">
                                                <input type="text" class="form-control"  name="nombres" >
                                             </div>
