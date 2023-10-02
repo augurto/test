@@ -42,7 +42,7 @@ if (!empty($tipoDocumento)) {
         die("Error en la conexión a la base de datos: " . $conexion->connect_error);
     } else {
         // Consultar la base de datos para obtener el nombreDocumento y Observacion
-        $consulta = "SELECT nombreDocumento, Observacion FROM documento WHERE id =1";
+        $consulta = "SELECT nombreDocumento, Observacion FROM documento WHERE id = ?";
         $stmt = $conexion->prepare($consulta);
         $stmt->bind_param("i", $tipoDocumento); // "i" indica que se espera un valor entero
         $stmt->execute();
