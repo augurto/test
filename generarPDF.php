@@ -23,7 +23,7 @@ class PDF extends FPDF {
     }
 }
 date_default_timezone_set('America/Lima');
-
+setlocale(LC_TIME, 'es_ES');
 $fechaActual2 = date('d-m-y');
 $fechaActual2 = str_replace('-', '/', $fechaActual2);
 $fechaActual2 = DateTime::createFromFormat('d/m/y', $fechaActual2);
