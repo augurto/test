@@ -9,7 +9,7 @@ $mail = new PHPMailer(true);
 
 try {
     // Configurar el servidor SMTP de Gmail
-    $mail->SMTPDebug = 0; // Cambia a 2 para ver mensajes de depuración detallados
+    $mail->SMTPDebug = 2; // Cambia a 2 para ver mensajes de depuración detallados
     $mail->isSMTP();
     $mail->Host = 'smtp.gmail.com';
     $mail->SMTPAuth = true;
