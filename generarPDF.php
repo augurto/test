@@ -38,7 +38,7 @@ $minuto2 = date('i'); // Minuto
 $segundo2 = date('s'); // Segundo
 
 // Crear la variable con el formato deseado
-$cartaID = 'CARTA N°'.$correlativo.'– GS – UGTMN – CMA – 23';
+$cartaID = utf8_decode('CARTA N°'.$correlativo.'– GS – UGTMN – CMA – 23');
 
 // Agregar el texto "Carta:" seguido de la variable $cartaID
 $pdf->Cell(0, 10, 'Carta: ' . $cartaID, 0, 1, 'R');
