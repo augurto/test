@@ -26,7 +26,7 @@ $anio = date('Y'); // Año
 
 // Agregar la fecha en formato "día, nombre del mes y año"
 $fecha = $nombreDias[date('w')] . ', ' . $dia . ' de ' . $nombreMeses[$mes - 1] . ' de ' . $anio;
-$pdf->Cell(0, 10, 'Fecha: ' . $fecha, 0, 1, 'R');
+$pdf->Cell(0, 10, 'Yanacancha, ' . $fecha, 0, 1, 'R');
 
 // Obtener la fecha actual en la zona horaria de Perú
 date_default_timezone_set('America/Lima');
@@ -38,7 +38,7 @@ $minuto2 = date('i'); // Minuto
 $segundo2 = date('s'); // Segundo
 
 // Crear la variable con el formato deseado
-$cartaID = 'CA-' . $anio2 . $mes2 . $dia2 . $hora2 . $minuto2 . $segundo2;
+$cartaID = 'CARTA N°'.$correlativo.'– GS – UGTMN – CMA – 23';
 
 // Agregar el texto "Carta:" seguido de la variable $cartaID
 $pdf->Cell(0, 10, 'Carta: ' . $cartaID, 0, 1, 'R');
