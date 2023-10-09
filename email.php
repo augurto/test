@@ -20,7 +20,7 @@ try {
 
     // Destinatarios
     $mail->setFrom('ego.17.22@gmail.com', 'Pruebas Ego');
-    $mail->addAddress('augurto.17gmail.com', 'Destinatario 1');
+    $mail->addAddress('augurto.17@gmail.com', 'Destinatario 1');
     $mail->addAddress('lolahydra21@gmail.com', 'Destinatario 2');
 
     // Contenido del correo
