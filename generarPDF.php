@@ -71,6 +71,9 @@ $pdf->Ln(30); // 5 saltos de línea
 $nombre = $_POST['nombres']; // Asegúrate de obtener el valor del formulario adecuadamente
 $pdf->Cell(0, 10, 'SR: ' . $nombre, 0, 1, 'L');
 // Recorrer los IDs de usuarios seleccionados y consultar la base de datos
+// Recorrer los IDs de usuarios seleccionados y consultar la base de datos
+$usuariosData = array(); // Crear un arreglo para almacenar los datos de los usuarios
+
 foreach ($selectedUsers as $id_user) {
     $userQuery = "SELECT nombre, cargo FROM usuarios WHERE id_user = $id_user";
     $userResult = $conn->query($userQuery);
@@ -80,22 +83,26 @@ foreach ($selectedUsers as $id_user) {
         $nombreUsuario = $userRow["nombre"];
         $cargoUsuario = $userRow["cargo"];
 
-        // Agregar el nombre y el cargo de cada usuario al PDF
-        $nombresUsuarios .= $nombreUsuario . "\n";
-        $cargosUsuarios .= $cargoUsuario . "\n";
+        // Agregar los datos del usuario al arreglo
+        $usuariosData[] = array(
+            'nombre' => $nombreUsuario,
+            'cargo' => $cargoUsuario,
+        );
     }
 }
 
 // Agregar "Usuarios Seleccionados:"
 $pdf->Cell(0, 10, 'Usuarios Seleccionados:', 0, 1, 'L');
 
-// Agregar los nombres de los usuarios al PDF
-$pdf->Cell(0, 10, 'Nombres:', 0, 1, 'L');
-$pdf->MultiCell(0, 10, utf8_decode($nombresUsuarios), 0, 'L');
+// Iterar a través de los datos de los usuarios y agregarlos al PDF uno por uno
+foreach ($usuariosData as $userData) {
+    $nombreUsuario = $userData['nombre'];
+    $cargoUsuario = $userData['cargo'];
 
-// Agregar los cargos de los usuarios al PDF
-$pdf->Cell(0, 10, 'Cargos:', 0, 1, 'L');
-$pdf->MultiCell(0, 10, utf8_decode($cargosUsuarios), 0, 'L');
+    // Agregar nombre y cargo al PDF
+    $pdf->MultiCell(0, 10, utf8_decode($nombreUsuario), 0, 'L');
+    $pdf->MultiCell(0, 10, utf8_decode($cargoUsuario), 0, 'L');
+}
 
 // Texto justificado
 $textoJustificado = "Apreciable Sr. Trinquete Chanchullo, por medio de este oficio se le hace comunicación de la resolución de la junta directiva de esta empresa, en relación a su comportamiento y manejo de los recursos económicos de la sucursal bajo su cargo. Según los reportes anteriores que hemos tenido, aunadas a las quejas de malos tratos recibidos por usted por parte de sus subordinados, comunicándole el dictamen de la junta directiva, consistente en la resolución de separarlo del cargo que ostenta dentro de esta empresa y pedirle su renuncia.";
