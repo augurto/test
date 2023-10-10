@@ -1,5 +1,5 @@
 <?php
-<?php
+
 require('fpdf/fpdf.php');
 
 // Obtener los datos del formulario
