@@ -27,7 +27,8 @@ if ($conn->query($insertQuery) === true) {
 $pdf = new FPDF();
 $pdf->AddPage();
 // Reduce el espacio entre líneas a 4 puntos
-$pdf->SetLineSpacing(4);
+
+$lineHeight = 4;
 
 // Configurar la fuente y el tamaño
 $pdf->SetFont('Arial', '', 10);
@@ -113,7 +114,7 @@ $textoJustificado = "Por la presente, me dirijo a usted con la finalidad de hace
 ";
 
 // Agregar el texto justificado
-$pdf->MultiCell(0, 10, utf8_decode($textoJustificado), 0, 'J');
+$pdf->MultiCell(0, 4, utf8_decode($textoJustificado), 0, 'J');
 $pdf->Ln(5); 
 
 // Agregar "Requiero:" y los datos del formulario (Requerimiento)
