@@ -83,10 +83,10 @@ include 'includes/conexion.php'; // Incluir el archivo de conexión
                                         </div>
                                         <!-- end row -->
                                         <div class="row mb-3">
-                                            <label class="col-sm-2 col-form-label">Select</label>
+                                            <label class="col-sm-2 col-form-label">Personal</label>
                                             <div class="col-sm-10">
                                                 <select class="form-select" aria-label="Default select example">
-                                                    <option selected="">Open this select menu</option>
+                                                    <option selected="">Selecciona Usuario</option>
 
                                                     <?php
                                                     // Incluir el archivo de conexión a la base de datos
@@ -99,8 +99,10 @@ include 'includes/conexion.php'; // Incluir el archivo de conexión
                                                     if ($result->num_rows > 0) {
                                                         // Generar opciones con los nombres obtenidos
                                                         while ($row = $result->fetch_assoc()) {
+                                                            $id_user = $row["id_user"];
                                                             $nombre = $row["nombre"];
-                                                            echo "<option value='$nombre'>$nombre</option>";
+                                                            $cargo = $row["cargo"];
+                                                            echo "<option value='$id_user'>$nombre.'-'.$cargo</option>";
                                                         }
                                                     }
 
