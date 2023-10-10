@@ -6,7 +6,9 @@ require('fpdf/fpdf.php');
 
 $nombres = $_POST['nombres'];
 $requerimiento = $_POST['Requerimiento'];
-$selectedUsers = $_POST['selected_users']; 
+$selectedUsers = $_POST['selected_users'];
+$mensaje = $_POST['mensaje'];
+ 
 
 
 // Incluir el archivo de conexión a la base de datos
@@ -174,7 +176,7 @@ try {
     // Definir el contenido del correo
     $mail->isHTML(true);
     $mail->Subject = 'Aunto correo prueba';
-    $mail->Body = 'Contenido del correo';
+    $mail->Body = $mensaje;
 
 
     // Recorre los IDs de usuario seleccionados

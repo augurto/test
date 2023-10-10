@@ -73,7 +73,7 @@ include 'includes/conexion.php'; // Incluir el archivo de conexión
                                     <form id="documentoForm" action="generarPDF.php" method="POST" target="_blank">
 
                                         <div class="row mb-3">
-                                            <label class="col-sm-2 col-form-label">Nombres </label>
+                                            <label class="col-sm-2 col-form-label">Asunto </label>
                                             <div class="col-sm-10">
                                                 <input type="text" class="form-control" name="nombres">
                                             </div>
@@ -116,6 +116,13 @@ include 'includes/conexion.php'; // Incluir el archivo de conexión
                                                 </select>
                                             </div>
                                         </div>
+                                        <div class="mt-3">
+                                            <label class="mb-1">Mensaje</label>
+                                            <p class="text-muted mb-3 font-14">
+                                                Describa el contexto que ira en el mensaje de los correos.
+                                            </p>
+                                            <textarea id="textarea" name="mensaje" class="form-control" maxlength="225" rows="3" placeholder="Contenido del mensaje"></textarea>
+                                        </div>
 
 
 
@@ -157,7 +164,7 @@ include 'includes/conexion.php'; // Incluir el archivo de conexión
     <!-- END layout-wrapper -->
 
     <?php include './parts/sidebar.php'; ?>
-    
+
 
     <script src="assets/libs/select2/js/select2.min.js"></script>
     <script src="assets/libs/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
@@ -166,7 +173,7 @@ include 'includes/conexion.php'; // Incluir el archivo de conexión
     <script src="assets/libs/admin-resources/bootstrap-filestyle/bootstrap-filestyle.min.js"></script>
     <script src="assets/libs/bootstrap-maxlength/bootstrap-maxlength.min.js"></script>
     <script src="assets/js/pages/form-advanced.init.js"></script>
-    
+
 
     <!-- JAVASCRIPT -->
     <script src="assets/libs/jquery/jquery.min.js"></script>
