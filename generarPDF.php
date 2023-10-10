@@ -62,15 +62,13 @@ $segundo2 = date('s'); // Segundo
 
 
 // Agregar el texto "Carta:" seguido de la variable $cartaID
-$pdf->Cell(0, 10, utf8_decode(' CARTA N°').$id_inserted, 0, 1, 'R');
+$pdf->Cell(0, 10, utf8_decode(' CARTA N°').$id_inserted, 0, 1, 'L');
 
 // Agregar saltos de línea
-$pdf->Ln(30); // 5 saltos de línea
+$pdf->Ln(20); // 5 saltos de línea
 
 // Agregar "SR:" y los datos del formulario (nombre)
 $nombre = $_POST['nombres']; // Asegúrate de obtener el valor del formulario adecuadamente
-$pdf->Cell(0, 10, 'SR: ' . $nombre, 0, 1, 'L');
-// Recorrer los IDs de usuarios seleccionados y consultar la base de datos
 // Recorrer los IDs de usuarios seleccionados y consultar la base de datos
 $usuariosData = array(); // Crear un arreglo para almacenar los datos de los usuarios
 
@@ -107,8 +105,9 @@ foreach ($usuariosData as $userData) {
 }
 
 // Texto justificado
-
-$pdf->Cell(0, 10, utf8_decode('Señores :'), 0, 1, 'L');
+$pdf->SetFont('Arial', 'B', 12);
+$pdf->Cell(0, 10, utf8_decode('Asunto : '.$nombres), 0, 1, 'L');
+$pdf->SetFont('Arial', '', 12);
 $textoJustificado = "Por la presente, me dirijo a usted con la finalidad de hacerle llegar nuestros saludos cordiales en nombre propio y de Compañía Minera Antamina S.A., a la vez manifestarle que como parte del trabajo conjunto que venimos realizando con la Comunidad Campesina de Santa Cruz de Pichiu, en esta oportunidad solicitamos tenga a bien enviarnos los datos completos (nombres y apellidos, DNI, fecha de nacimiento y número de contacto) de 05 personas de la C.C. SCP para la posición de Peón, los detalles a continuación:
 ";
 
