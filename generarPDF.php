@@ -29,7 +29,7 @@ $pdf->AddPage();
 
 
 // Configurar la fuente y el tamaño
-$pdf->SetFont('Arial', '', 12);
+$pdf->SetFont('Arial', '', 10);
 
 // Días de la semana y meses en español
 $nombreDias = array('Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado');
@@ -65,7 +65,7 @@ $segundo2 = date('s'); // Segundo
 $pdf->Cell(0, 10, utf8_decode(' CARTA N°').$id_inserted, 0, 1, 'L');
 
 // Agregar saltos de línea
-$pdf->Ln(20); // 5 saltos de línea
+$pdf->Ln(10); // 5 saltos de línea
 
 // Agregar "SR:" y los datos del formulario (nombre)
 $nombre = $_POST['nombres']; // Asegúrate de obtener el valor del formulario adecuadamente
@@ -96,18 +96,18 @@ foreach ($usuariosData as $userData) {
     $cargoUsuario = $userData['cargo'];
 
     // Agregar nombre y cargo al PDF
-    $pdf->SetFont('Arial', 'B', 12);
+    $pdf->SetFont('Arial', 'B', 10);
     $pdf->MultiCell(0, 10, utf8_decode($nombreUsuario), 0, 'L');
     // Agregar el texto en negrita
-    $pdf->SetFont('Arial', '', 12);
+    $pdf->SetFont('Arial', '', 10);
    
     $pdf->MultiCell(0, 10, utf8_decode($cargoUsuario), 0, 'L');
 }
 
 // Texto justificado
-$pdf->SetFont('Arial', 'B', 12);
+$pdf->SetFont('Arial', 'B', 10);
 $pdf->Cell(0, 10, utf8_decode('Asunto : '.$nombres), 0, 1, 'L');
-$pdf->SetFont('Arial', '', 12);
+$pdf->SetFont('Arial', '', 10);
 $textoJustificado = "Por la presente, me dirijo a usted con la finalidad de hacerle llegar nuestros saludos cordiales en nombre propio y de Compañía Minera Antamina S.A., a la vez manifestarle que como parte del trabajo conjunto que venimos realizando con la Comunidad Campesina de Santa Cruz de Pichiu, en esta oportunidad solicitamos tenga a bien enviarnos los datos completos (nombres y apellidos, DNI, fecha de nacimiento y número de contacto) de 05 personas de la C.C. SCP para la posición de Peón, los detalles a continuación:
 ";
 
@@ -120,7 +120,7 @@ $requerimiento = $_POST['Requerimiento']; // Asegúrate de obtener el valor del 
 $pdf->Cell(0, 10, 'Asunto: ' . $requerimiento, 0, 1, 'R');
 
 // Configurar la fuente y el tamaño
-$pdf->SetFont('Arial', '', 12);
+$pdf->SetFont('Arial', '', 10);
 
 // Texto justificado
 $textoJustificado = "N° de vacantes: 05 personas\n";
@@ -138,7 +138,11 @@ $textoJustificado .= "Cordialmente,";
 
 // Agregar el texto justificado
 $pdf->MultiCell(0, 10, utf8_decode($textoJustificado));
-
+// Agregar la firma y el cargo
+$pdf->Cell(0, 10, 'MONICA JACOBS ALVARADO', 0, 1, 'L'); // Nombre
+$pdf->Cell(0, 10, 'Superintendente General de Gestión Social', 0, 1, 'L'); // Cargo
+$pdf->Cell(0, 10, 'Vicepresidencia de Sostenibilidad y Asuntos Externos', 0, 1, 'L'); // Cargo
+$pdf->Cell(0, 10, 'Compañía Minera Antamina S.A', 0, 1, 'L');
 // Centrar la imagen de la firma
 $pdf->Image('assets/images/firma.png', 75, $pdf->GetY() + 20, 50);
 
