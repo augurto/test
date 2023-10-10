@@ -82,12 +82,12 @@ include 'includes/conexion.php'; // Incluir el archivo de conexión
                                             </div>
                                         </div>
                                         <!-- end row -->
+                                        
                                         <div class="row mb-3">
                                             <label class="col-sm-2 col-form-label">Personal</label>
                                             <div class="col-sm-10">
-                                                <select class="form-select" aria-label="Default select example" name="selected_user">
-                                                    <option selected="">Selecciona Usuario</option>
-
+                                                <select class="select2 form-control select2-multiple" multiple="multiple" data-placeholder="Choose ..." name="selected_users[]">
+                                                    <!-- Agregar opciones dinámicamente desde la base de datos -->
                                                     <?php
                                                     // Incluir el archivo de conexión a la base de datos
                                                     require 'db_connection.php';
@@ -97,23 +97,21 @@ include 'includes/conexion.php'; // Incluir el archivo de conexión
                                                     $result = $conn->query($sql);
 
                                                     if ($result->num_rows > 0) {
-                                                        // Generar opciones con los nombres obtenidos
                                                         while ($row = $result->fetch_assoc()) {
                                                             $id_user = $row["id_user"];
                                                             $nombre = $row["nombre"];
                                                             $cargo = $row["cargo"];
                                                             echo "<option value='$id_user'>$nombre - $cargo</option>";
-                                                            
                                                         }
                                                     }
 
                                                     // Cerrar la conexión a la base de datos
                                                     $conn->close();
                                                     ?>
-
                                                 </select>
                                             </div>
                                         </div>
+
 
 
 
