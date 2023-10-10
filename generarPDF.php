@@ -5,11 +5,7 @@ require('fpdf/fpdf.php');
 // Obtener los datos del formulario
 $nombres = $_POST['nombres'];
 $requerimiento = $_POST['Requerimiento'];
-$selectedUserId = $_POST['selected_user']; // Nombre del campo select
-
-error_log("Mensaje de depuración 1");
-print_r($selectedUsers); // Imprime el contenido del arreglo $selectedUsers
-error_log("Mensaje de depuración 2");
+$selectedUserId = $_POST['selected_users']; // Nombre del campo select
 
 
 // Incluir el archivo de conexión a la base de datos
