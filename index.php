@@ -85,7 +85,7 @@ include 'includes/conexion.php'; // Incluir el archivo de conexión
                                         <div class="row mb-3">
                                             <label class="col-sm-2 col-form-label">Personal</label>
                                             <div class="col-sm-10">
-                                                <select class="form-select" aria-label="Default select example">
+                                                <select class="form-select" aria-label="Default select example" name="selected_user">
                                                     <option selected="">Selecciona Usuario</option>
 
                                                     <?php

@@ -1,9 +1,28 @@
 <?php
+<?php
 require('fpdf/fpdf.php');
+
+// Obtener los datos del formulario
+$nombres = $_POST['nombres'];
+$requerimiento = $_POST['Requerimiento'];
+$selectedUserId = $_POST['selected_user']; // Nombre del campo select
+
+// Incluir el archivo de conexión a la base de datos
+require 'db_connection.php';
+
+// Insertar los datos del formulario en una tabla (ajusta el nombre de la tabla según tu base de datos)
+$insertQuery = "INSERT INTO documentoCreado (nombres, requerimiento, id_user) VALUES ('$nombres', '$requerimiento', '$selectedUserId')";
+if ($conn->query($insertQuery) === true) {
+    // Obtener el ID del registro insertado
+    $id_inserted = $conn->insert_id;
+} else {
+    echo 'Error al insertar datos en la base de datos: ' . $conn->error;
+}
 
 // Crear una instancia de la clase FPDF
 $pdf = new FPDF();
 $pdf->AddPage();
+
 
 // Configurar la fuente y el tamaño
 $pdf->SetFont('Arial', '', 12);
@@ -39,7 +58,7 @@ $segundo2 = date('s'); // Segundo
 
 
 // Agregar el texto "Carta:" seguido de la variable $cartaID
-$pdf->Cell(0, 10, utf8_decode(' CARTA N° – GS – UGTMN – CMA – 23'), 0, 1, 'R');
+$pdf->Cell(0, 10, utf8_decode(' CARTA N°'), 0, 1, 'R');
 
 // Agregar saltos de línea
 $pdf->Ln(30); // 5 saltos de línea
