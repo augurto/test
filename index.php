@@ -93,7 +93,7 @@ include 'includes/conexion.php'; // Incluir el archivo de conexión
                                                     require 'db_connection.php';
 
                                                     // Consulta SQL para obtener los nombres de la tabla "usuarios"
-                                                    $sql = "SELECT nombre FROM usuarios";
+                                                    $sql = "SELECT * FROM usuarios";
                                                     $result = $conn->query($sql);
 
                                                     if ($result->num_rows > 0) {
