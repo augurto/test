@@ -102,7 +102,8 @@ include 'includes/conexion.php'; // Incluir el archivo de conexión
                                                             $id_user = $row["id_user"];
                                                             $nombre = $row["nombre"];
                                                             $cargo = $row["cargo"];
-                                                            echo "<option value='$id_user'>$nombre.'-'.$cargo</option>";
+                                                            echo "<option value='$id_user'>$nombre.-.$cargo</option>";
+                                                            
                                                         }
                                                     }
 
