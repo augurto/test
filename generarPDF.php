@@ -26,7 +26,8 @@ if ($conn->query($insertQuery) === true) {
 // Crear una instancia de la clase FPDF
 $pdf = new FPDF();
 $pdf->AddPage();
-
+// Reduce el espacio entre líneas a 4 puntos
+$pdf->SetLineSpacing(4);
 
 // Configurar la fuente y el tamaño
 $pdf->SetFont('Arial', '', 10);
