@@ -33,7 +33,7 @@ include 'includes/conexion.php'; // Incluir el archivo de conexión
     <!-- App Css-->
     <link href="assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  
+
 </head>
 
 <body data-topbar="dark">
@@ -65,24 +65,55 @@ include 'includes/conexion.php'; // Incluir el archivo de conexión
 
                                     <h4 class="card-title">Generar PDF</h4>
 
-                                    <form id="documentoForm" action="generarPDF.php" method="POST"  target="_blank">
+                                    <form id="documentoForm" action="generarPDF.php" method="POST" target="_blank">
 
                                         <div class="row mb-3">
                                             <label class="col-sm-2 col-form-label">Nombres </label>
                                             <div class="col-sm-10">
-                                               <input type="text" class="form-control"  name="nombres" >
+                                                <input type="text" class="form-control" name="nombres">
                                             </div>
                                         </div>
 
                                         <div class="row mb-3">
                                             <label for="example-text-input" class="col-sm-2 col-form-label">Requerimiento</label>
                                             <div class="col-sm-10">
-                                                
-                                            <input type="text" class="form-control"  name="Requerimiento" >
+
+                                                <input type="text" class="form-control" name="Requerimiento">
+                                            </div>
+                                        </div>
+                                        <!-- end row -->
+                                        <div class="row mb-3">
+                                            <label class="col-sm-2 col-form-label">Select</label>
+                                            <div class="col-sm-10">
+                                                <select class="form-select" aria-label="Default select example">
+                                                    <option selected="">Open this select menu</option>
+
+                                                    <?php
+                                                    // Incluir el archivo de conexión a la base de datos
+                                                    require 'db_connection.php';
+
+                                                    // Consulta SQL para obtener los nombres de la tabla "usuarios"
+                                                    $sql = "SELECT nombre FROM usuarios";
+                                                    $result = $conn->query($sql);
+
+                                                    if ($result->num_rows > 0) {
+                                                        // Generar opciones con los nombres obtenidos
+                                                        while ($row = $result->fetch_assoc()) {
+                                                            $nombre = $row["nombre"];
+                                                            echo "<option value='$nombre'>$nombre</option>";
+                                                        }
+                                                    }
+
+                                                    // Cerrar la conexión a la base de datos
+                                                    $conn->close();
+                                                    ?>
+
+                                                </select>
                                             </div>
                                         </div>
 
-                                      
+
+
                                         <div class="row mb-3">
                                             <div class="col-sm-10 offset-sm-2">
                                                 <button type="submit" class="btn btn-primary">Generar PDF</button>
