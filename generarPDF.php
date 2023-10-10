@@ -107,7 +107,10 @@ foreach ($usuariosData as $userData) {
 }
 
 // Texto justificado
-$textoJustificado = "Apreciable Sr. Trinquete Chanchullo, por medio de este oficio se le hace comunicación de la resolución de la junta directiva de esta empresa, en relación a su comportamiento y manejo de los recursos económicos de la sucursal bajo su cargo. Según los reportes anteriores que hemos tenido, aunadas a las quejas de malos tratos recibidos por usted por parte de sus subordinados, comunicándole el dictamen de la junta directiva, consistente en la resolución de separarlo del cargo que ostenta dentro de esta empresa y pedirle su renuncia.";
+
+$pdf->Cell(0, 10, utf8_decode('Señores :'), 0, 1, 'L');
+$textoJustificado = "Por la presente, me dirijo a usted con la finalidad de hacerle llegar nuestros saludos cordiales en nombre propio y de Compañía Minera Antamina S.A., a la vez manifestarle que como parte del trabajo conjunto que venimos realizando con la Comunidad Campesina de Santa Cruz de Pichiu, en esta oportunidad solicitamos tenga a bien enviarnos los datos completos (nombres y apellidos, DNI, fecha de nacimiento y número de contacto) de 05 personas de la C.C. SCP para la posición de Peón, los detalles a continuación:
+";
 
 // Agregar el texto justificado
 $pdf->MultiCell(0, 10, utf8_decode($textoJustificado), 0, 'J');
