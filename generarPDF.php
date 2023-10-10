@@ -117,14 +117,27 @@ $pdf->Ln(5);
 
 // Agregar "Requiero:" y los datos del formulario (Requerimiento)
 $requerimiento = $_POST['Requerimiento']; // Asegúrate de obtener el valor del formulario adecuadamente
-$pdf->Cell(0, 10, 'Requiero: ' . $requerimiento, 0, 1, 'L');
+$pdf->Cell(0, 10, 'Asunto: ' . $requerimiento, 0, 1, 'R');
 
-// Texto del cuerpo de la carta
-$textoCuerpo = "Adjuntando documentos que prueban diversos malos manejos, así como se adjuntan testimonios respectivos a los malos tratos.\n";
-$textoCuerpo .= "Atentamente";
+// Configurar la fuente y el tamaño
+$pdf->SetFont('Arial', '', 12);
 
-// Agregar el texto del cuerpo de la carta
-$pdf->MultiCell(0, 10, utf8_decode($textoCuerpo), 0, 'J');
+// Texto justificado
+$textoJustificado = "N° de vacantes: 05 personas\n";
+$textoJustificado .= "Empresa: STRACON\n";
+$textoJustificado .= "Posición: Peón\n";
+$textoJustificado .= "Requisitos: De preferencia varones, carné de construcción civil vigente y habilitado. Antecedentes Policiales y Penales. Primaria, Secundaria: Conclusa o inconclusa. Abstenerse personal con instrucción superior: Técnica o Universitaria.\n";
+$textoJustificado .= "Sueldo: Jornal básico diario de S/56.80 Beneficios según el convenio colectivo de construcción civil vigente.\n";
+$textoJustificado .= "Vigencia de Contrato: No aplica la firma de contrato debido al régimen utilizado para este vínculo laboral: Construcción Civil.\n";
+$textoJustificado .= "Tiempo de Contrato: Según necesidad de los frentes.\n";
+$textoJustificado .= "Régimen: Régimen de construcción civil.\n";
+$textoJustificado .= "Sistema de Trabajo: Régimen construcción civil\n";
+$textoJustificado .= "\nLos datos de las 05 personas que participarían en esta convocatoria deberán ser enviados el jueves 06 de julio a mi representada.\n";
+$textoJustificado .= "Sin otro particular, aprovecho la oportunidad para reiterarle los sentimientos de mi consideración y estima.\n\n";
+$textoJustificado .= "Cordialmente,";
+
+// Agregar el texto justificado
+$pdf->MultiCell(0, 10, utf8_decode($textoJustificado));
 
 // Centrar la imagen de la firma
 $pdf->Image('assets/images/firma.png', 75, $pdf->GetY() + 20, 50);
