@@ -91,7 +91,7 @@ include 'includes/conexion.php'; // Incluir el archivo de conexión
                                         <div class="row mb-3">
                                             <label class="col-sm-2 col-form-label">Personal</label>
                                             <div class="col-sm-10">
-                                                <select class="select2 form-control select2-multiple" multiple="multiple" data-placeholder="Choose ..." name="selected_users[]">
+                                                <select class="select2 form-control select2-multiple" multiple="multiple" data-placeholder="Buscar Persona" name="selected_users[]">
                                                     <!-- Agregar opciones dinámicamente desde la base de datos -->
                                                     <?php
                                                     // Incluir el archivo de conexión a la base de datos
