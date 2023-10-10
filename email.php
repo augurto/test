@@ -1,4 +1,5 @@
 <?php
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
@@ -50,10 +51,10 @@ try {
     $mail->SMTPSecure = 'tls';
     $mail->Port = 587;
 
-    // Destinatarios
-    $mail->setFrom('ego.17.22@gmail.com', 'Pruebas Ego');
-    $mail->addAddress('augurto.17@gmail.com', 'Destinatario 1');
-    $mail->addAddress('lolahydra21@gmail.com', 'Destinatario 2');
+    // Destinatarios dinámicos
+    foreach ($correos as $correo) {
+        $mail->addAddress($correo);
+    }
 
     // Contenido del correo
     $mail->isHTML(true);
