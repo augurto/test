@@ -3,9 +3,10 @@
 require('fpdf/fpdf.php');
 
 // Obtener los datos del formulario
+
 $nombres = $_POST['nombres'];
 $requerimiento = $_POST['Requerimiento'];
-$selectedUserId = $_POST['selected_users']; // Nombre del campo select
+$selectedUsers = $_POST['selected_users']; 
 
 
 // Incluir el archivo de conexión a la base de datos
