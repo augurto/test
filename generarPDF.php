@@ -91,7 +91,7 @@ foreach ($selectedUsers as $id_user) {
     }
 }
 
-
+$pdf->Cell(0, 10, utf8_decode('Señores :'), 0, 1, 'L');
 // Iterar a través de los datos de los usuarios y agregarlos al PDF uno por uno
 foreach ($usuariosData as $userData) {
     $nombreUsuario = $userData['nombre'];
@@ -102,7 +102,7 @@ foreach ($usuariosData as $userData) {
     $pdf->MultiCell(0, 10, utf8_decode($nombreUsuario), 0, 'L');
     // Agregar el texto en negrita
     $pdf->SetFont('Arial', '', 12);
-    $pdf->Cell(0, 10, 'Señores :', 0, 1, 'L');
+   
     $pdf->MultiCell(0, 10, utf8_decode($cargoUsuario), 0, 'L');
 }
 
