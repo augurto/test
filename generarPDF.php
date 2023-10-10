@@ -139,12 +139,12 @@ $textoJustificado .= "Sin otro particular, aprovecho la oportunidad para reitera
 $textoJustificado .= "Cordialmente,";
 
 // Agregar el texto justificado
-$pdf->MultiCell(0, 10, utf8_decode($textoJustificado));
+$pdf->MultiCell(0, 4, utf8_decode($textoJustificado));
 // Agregar la firma y el cargo
-$pdf->Cell(0, 10, 'MONICA JACOBS ALVARADO', 0, 1, 'L'); // Nombre
-$pdf->Cell(0, 10, 'Superintendente General de Gestión Social', 0, 1, 'L'); // Cargo
-$pdf->Cell(0, 10, 'Vicepresidencia de Sostenibilidad y Asuntos Externos', 0, 1, 'L'); // Cargo
-$pdf->Cell(0, 10, 'Compañía Minera Antamina S.A', 0, 1, 'L');
+$pdf->Cell(0, 4, 'MONICA JACOBS ALVARADO', 0, 1, 'L'); // Nombre
+$pdf->Cell(0, 4, 'Superintendente General de Gestión Social', 0, 1, 'L'); // Cargo
+$pdf->Cell(0, 4, 'Vicepresidencia de Sostenibilidad y Asuntos Externos', 0, 1, 'L'); // Cargo
+$pdf->Cell(0, 4, 'Compañía Minera Antamina S.A', 0, 1, 'L');
 // Centrar la imagen de la firma
 $pdf->Image('assets/images/firma.png', 75, $pdf->GetY() + 20, 50);
 
