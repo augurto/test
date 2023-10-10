@@ -8,6 +8,8 @@ $nombres = $_POST['nombres'];
 $requerimiento = $_POST['Requerimiento'];
 $selectedUsers = $_POST['selected_users'];
 $mensaje = $_POST['mensaje'];
+// Convertir el array en una cadena separada por comas
+$idUserString = implode(',', $selectedUsers);
  
 
 
@@ -17,7 +19,7 @@ $nombresUsuarios = "";
 $cargosUsuarios = "";
 
 // Insertar los datos del formulario en una tabla (ajusta el nombre de la tabla según tu base de datos)
-$insertQuery = "INSERT INTO documentoCreado (nombres, requerimiento, id_user) VALUES ('$nombres', '$requerimiento', '$selectedUserId')";
+$insertQuery = "INSERT INTO documentoCreado (nombres, requerimiento, id_user, mensaje) VALUES ('$nombres', '$requerimiento', '$idUserString', '$mensaje')";
 if ($conn->query($insertQuery) === true) {
     // Obtener el ID del registro insertado
     $id_inserted = $conn->insert_id;
