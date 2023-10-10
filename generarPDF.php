@@ -58,7 +58,7 @@ $segundo2 = date('s'); // Segundo
 
 
 // Agregar el texto "Carta:" seguido de la variable $cartaID
-$pdf->Cell(0, 10, utf8_decode(' CARTA N°').$insert_id, 0, 1, 'R');
+$pdf->Cell(0, 10, utf8_decode(' CARTA N°').$id_inserted, 0, 1, 'R');
 
 // Agregar saltos de línea
 $pdf->Ln(30); // 5 saltos de línea
