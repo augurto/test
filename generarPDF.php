@@ -50,7 +50,7 @@ $mes = date('n'); // Mes numérico
 $anio = date('Y'); // Año
 
 // Agregar la fecha en formato "día, nombre del mes y año"
-$fecha = $nombreDias[date('w')] . ', ' . $dia . ' de ' . $nombreMeses[$mes - 1] . ' de ' . $anio;
+$fecha =  $dia . ' de ' . $nombreMeses[$mes - 1] . ' de ' . $anio;
 $pdf->Cell(0, 10, 'Yanacancha, ' . $fecha, 0, 1, 'R');
 
 // Obtener la fecha actual en la zona horaria de Perú
@@ -64,10 +64,10 @@ $segundo2 = date('s'); // Segundo
 
 
 // Agregar el texto "Carta:" seguido de la variable $cartaID
-$pdf->Cell(0, 10, utf8_decode(' CARTA N°').$id_inserted, 0, 1, 'L');
+$pdf->Cell(0, 10, utf8_decode(' CARTA N° 000').$id_inserted, 0, 1, 'L');
 
 // Agregar saltos de línea
-$pdf->Ln(10); // 5 saltos de línea
+$pdf->Ln(5); // 5 saltos de línea
 
 // Agregar "SR:" y los datos del formulario (nombre)
 $nombre = $_POST['nombres']; // Asegúrate de obtener el valor del formulario adecuadamente
@@ -151,4 +151,58 @@ $pdf->Image('assets/images/firma.png', 75, $pdf->GetY() + 20, 50);
 
 // Salida del PDF
 $pdf->Output();
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require 'PHPMailer/src/PHPMailer.php';
+require 'PHPMailer/src/SMTP.php';
+require 'PHPMailer/src/Exception.php';
+
+try {
+    // Configurar el servidor SMTP de Gmail
+    $mail = new PHPMailer(true);
+    $mail->SMTPDebug = 2; // Cambia a 2 para ver mensajes de depuración detallados
+    $mail->isSMTP();
+    $mail->Host = 'smtp.gmail.com';
+    $mail->SMTPAuth = true;
+    $mail->Username = 'ego.17.22@gmail.com'; // Cambia esto a tu dirección de correo
+    $mail->Password = 'yxpg decu fxnq egsv'; // Tu contraseña de correo
+    $mail->SMTPSecure = 'tls';
+    $mail->Port = 587;
+
+    // Definir el contenido del correo
+    $mail->isHTML(true);
+    $mail->Subject = 'Aunto correo prueba';
+    $mail->Body = 'Contenido del correo';
+
+
+    // Recorre los IDs de usuario seleccionados
+    $selectedUsers = $_POST['selected_users'];
+    foreach ($selectedUsers as $id_user) {
+        // Consulta SQL para obtener la dirección de correo electrónico del usuario
+        $sql = "SELECT email FROM usuarios WHERE id_user = $id_user";
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            $correo = $row["email"];
+
+            // Limpiar y configurar el destinatario
+            $mail->ClearAllRecipients();
+            $mail->addAddress($correo);
+
+            // Enviar el correo
+            $mail->send();
+            
+        }
+    }
+
+    // Cerrar la conexión a la base de datos
+    $conn->close();
+
+} catch (Exception $e) {
+    echo 'Error al enviar correos: ' . $mail->ErrorInfo;
+}
+
 ?>
