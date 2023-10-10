@@ -18,6 +18,11 @@ include 'includes/conexion.php'; // Incluir el archivo de conexión
     <!-- App favicon -->
     <link rel="shortcut icon" href="assets/images/favicon.ico">
 
+    <link href="assets/libs/select2/css/select2.min.css" rel="stylesheet" type="text/css">
+    <link href="assets/libs/bootstrap-datepicker/css/bootstrap-datepicker.min.css" rel="stylesheet">
+    <link href="assets/libs/spectrum-colorpicker2/spectrum.min.css" rel="stylesheet" type="text/css">
+    <link href="assets/libs/bootstrap-touchspin/jquery.bootstrap-touchspin.min.css" rel="stylesheet">
+
     <!-- DataTables -->
     <link href="assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
     <link href="assets/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css" />
@@ -82,7 +87,7 @@ include 'includes/conexion.php'; // Incluir el archivo de conexión
                                             </div>
                                         </div>
                                         <!-- end row -->
-                                        
+
                                         <div class="row mb-3">
                                             <label class="col-sm-2 col-form-label">Personal</label>
                                             <div class="col-sm-10">
@@ -152,6 +157,16 @@ include 'includes/conexion.php'; // Incluir el archivo de conexión
     <!-- END layout-wrapper -->
 
     <?php include './parts/sidebar.php'; ?>
+    
+
+    <script src="assets/libs/select2/js/select2.min.js"></script>
+    <script src="assets/libs/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+    <script src="assets/libs/spectrum-colorpicker2/spectrum.min.js"></script>
+    <script src="assets/libs/bootstrap-touchspin/jquery.bootstrap-touchspin.min.js"></script>
+    <script src="assets/libs/admin-resources/bootstrap-filestyle/bootstrap-filestyle.min.js"></script>
+    <script src="assets/libs/bootstrap-maxlength/bootstrap-maxlength.min.js"></script>
+    <script src="assets/js/pages/form-advanced.init.js"></script>
+    
 
     <!-- JAVASCRIPT -->
     <script src="assets/libs/jquery/jquery.min.js"></script>
