@@ -108,6 +108,12 @@
                                         </div>
 
 
+                                        <div class="row mb-3">
+                                            <label class="col-sm-2 col-form-label">Año:</label>
+                                            <div class="col-sm-10">
+                                                <input type="number" class="form-control" name="anio" required>
+                                            </div>
+                                        </div>
                                         <div class="mb-4">
                                             <label class="form-label">Seleccionar Año</label>
                                             <div class="input-group">
