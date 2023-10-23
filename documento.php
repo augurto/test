@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="es">
 
@@ -11,7 +10,7 @@
     <meta content="Themesdesign" name="author" />
     <!-- App favicon -->
     <link rel="shortcut icon" href="assets/images/favicon.ico">
-    
+
     <link href="assets/libs/select2/css/select2.min.css" rel="stylesheet" type="text/css">
     <link href="assets/libs/bootstrap-datepicker/css/bootstrap-datepicker.min.css" rel="stylesheet">
     <link href="assets/libs/spectrum-colorpicker2/spectrum.min.css" rel="stylesheet" type="text/css">
@@ -73,10 +72,10 @@
                                         </div>
 
                                         <div class="row mb-3">
-                                        <label class="col-sm-2 col-form-label">Tipo de documento:</label>
+                                            <label class="col-sm-2 col-form-label">Tipo de documento:</label>
                                             <div class="col-sm-10">
-                                            <select class="form-control select2"  name="tipo_documento">
-                                                <!-- Agregar opciones dinámicamente desde la base de datos -->
+                                                <select class="form-control select2" name="tipo_documento">
+                                                    <!-- Agregar opciones dinámicamente desde la base de datos -->
                                                     <?php
                                                     // Incluir el archivo de conexión a la base de datos
                                                     require 'includes/conTest.php';
@@ -104,9 +103,10 @@
                                         <div class="row mb-3">
                                             <label class="col-sm-2 col-form-label">Número:</label>
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control" name="numero" required>
+                                                <input type="number" class="form-control" name="numero" required pattern="[0-9]*">
                                             </div>
                                         </div>
+
 
                                         <div class="row mb-3">
                                             <label class="col-sm-2 col-form-label">Año:</label>
