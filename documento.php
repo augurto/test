@@ -79,12 +79,30 @@ include 'includes/conexion.php'; // Incluir el archivo de conexión
                                         </div>
 
                                         <div class="row mb-3">
-                                            <label class="col-sm-2 col-form-label">Tipo de documento:</label>
+                                        <label class="col-sm-2 col-form-label">Tipo de documento:</label>
                                             <div class="col-sm-10">
-                                                <select class="form-control" name="tipo_documento" required>
-                                                    <option value="opcion1">Opción 1</option>
-                                                    <option value="opcion2">Opción 2</option>
-                                                    <!-- Agrega más opciones según sea necesario -->
+                                                <select class="select2 form-control select2" data-placeholder="Buscar Documento"  name="tipo_documento" >
+                                                    <!-- Agregar opciones dinámicamente desde la base de datos -->
+                                                    <?php
+                                                    // Incluir el archivo de conexión a la base de datos
+                                                    require 'db_connection.php';
+
+                                                    // Consulta SQL para obtener los nombres de la tabla "usuarios"
+                                                    $sql = "SELECT * FROM documentos_tipo";
+                                                    $result = $conn->query($sql);
+
+                                                    if ($result->num_rows > 0) {
+                                                        while ($row = $result->fetch_assoc()) {
+                                                            $id_documento_tipo  = $row["id_documento_tipo "];
+                                                            $nombre = $row["nombre"];
+                                                            /* $cargo = $row["cargo"]; */
+                                                            echo "<option value='$id_documento_tipo'>$nombre</option>";
+                                                        }
+                                                    }
+
+                                                    // Cerrar la conexión a la base de datos
+                                                    $conn->close();
+                                                    ?>
                                                 </select>
                                             </div>
                                         </div>
