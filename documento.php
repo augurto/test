@@ -85,7 +85,7 @@ include 'includes/conexion.php'; // Incluir el archivo de conexión
                                                     <!-- Agregar opciones dinámicamente desde la base de datos -->
                                                     <?php
                                                     // Incluir el archivo de conexión a la base de datos
-                                                    require 'db_connection.php';
+                                                    require 'includes/conTest.php';
 
                                                     // Consulta SQL para obtener los nombres de la tabla "usuarios"
                                                     $sql = "SELECT * FROM documentos_tipo";
