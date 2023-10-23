@@ -1,9 +1,3 @@
-<?php
-
-include 'includes/conexion.php'; // Incluir el archivo de conexión
-
-
-?>
 
 <!doctype html>
 <html lang="es">
