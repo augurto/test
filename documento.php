@@ -75,7 +75,7 @@
                                         <div class="row mb-3">
                                         <label class="col-sm-2 col-form-label">Tipo de documento:</label>
                                             <div class="col-sm-10">
-                                                <select class="select2 form-control select2" data-placeholder="Buscar Documento"  name="tipo_documento" >
+                                            <select class="select2 form-control select2-multiple" multiple="multiple" data-placeholder="Buscar Documento"  name="tipo_documento" >
                                                     <!-- Agregar opciones dinámicamente desde la base de datos -->
                                                     <?php
                                                     // Incluir el archivo de conexión a la base de datos
