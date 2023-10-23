@@ -70,70 +70,102 @@ include 'includes/conexion.php'; // Incluir el archivo de conexión
 
                                     <h4 class="card-title">Generar PDF</h4>
 
-                                    <form id="documentoForm" action="generarPDF.php" method="POST" target="_blank">
-
+                                    <form action="procesar_formulario.php" method="POST">
                                         <div class="row mb-3">
-                                            <label class="col-sm-2 col-form-label">Asunto </label>
+                                            <label class="col-sm-2 col-form-label">Código:</label>
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control" name="nombres">
+                                                <input type="text" class="form-control" name="codigo" required>
                                             </div>
                                         </div>
 
                                         <div class="row mb-3">
-                                            <label for="example-text-input" class="col-sm-2 col-form-label">Requerimiento</label>
+                                            <label class="col-sm-2 col-form-label">Tipo de documento:</label>
                                             <div class="col-sm-10">
-
-                                                <input type="text" class="form-control" name="Requerimiento">
-                                            </div>
-                                        </div>
-                                        <!-- end row -->
-
-                                        <div class="row mb-3">
-                                            <label class="col-sm-2 col-form-label">Personal</label>
-                                            <div class="col-sm-10">
-                                                <select class="select2 form-control select2-multiple" multiple="multiple" data-placeholder="Buscar Persona" name="selected_users[]">
-                                                    <!-- Agregar opciones dinámicamente desde la base de datos -->
-                                                    <?php
-                                                    // Incluir el archivo de conexión a la base de datos
-                                                    require 'db_connection.php';
-
-                                                    // Consulta SQL para obtener los nombres de la tabla "usuarios"
-                                                    $sql = "SELECT * FROM usuarios";
-                                                    $result = $conn->query($sql);
-
-                                                    if ($result->num_rows > 0) {
-                                                        while ($row = $result->fetch_assoc()) {
-                                                            $id_user = $row["id_user"];
-                                                            $nombre = $row["nombre"];
-                                                            $cargo = $row["cargo"];
-                                                            echo "<option value='$id_user'>$nombre - $cargo</option>";
-                                                        }
-                                                    }
-
-                                                    // Cerrar la conexión a la base de datos
-                                                    $conn->close();
-                                                    ?>
+                                                <select class="form-control" name="tipo_documento" required>
+                                                    <option value="opcion1">Opción 1</option>
+                                                    <option value="opcion2">Opción 2</option>
+                                                    <!-- Agrega más opciones según sea necesario -->
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="mt-3">
-                                            <label class="mb-1">Mensaje</label>
-                                            <p class="text-muted mb-3 font-14">
-                                                Describa el contexto que ira en el mensaje de los correos.
-                                            </p>
-                                            <textarea id="textarea" name="mensaje" class="form-control" maxlength="225" rows="3" placeholder="Contenido del mensaje"></textarea>
-                                        </div>
-
-
-
 
                                         <div class="row mb-3">
-                                            <div class="col-sm-10 offset-sm-2">
-                                                <button type="submit" class="btn btn-primary">Generar PDF</button>
+                                            <label class="col-sm-2 col-form-label">Número:</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" name="numero" required>
                                             </div>
                                         </div>
 
+                                        <div class="row mb-3">
+                                            <label class="col-sm-2 col-form-label">Año:</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" name="anio" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-3">
+                                            <label class="col-sm-2 col-form-label">Entidad Remitente:</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" name="entidad_remitente" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-3">
+                                            <label class="col-sm-2 col-form-label">Suscrito:</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" name="suscrito" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-3">
+                                            <label class="col-sm-2 col-form-label">Destinatario o Cargo:</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" name="destinatario_o_cargo" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-3">
+                                            <label class="col-sm-2 col-form-label">Entidad:</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" name="entidad" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-3">
+                                            <label class="col-sm-2 col-form-label">Carpeta Fiscal:</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" name="carpeta_fiscal" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-3">
+                                            <label class="col-sm-2 col-form-label">Dirección:</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" name="direccion" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-3">
+                                            <label class="col-sm-2 col-form-label">Observaciones:</label>
+                                            <div class="col-sm-10">
+                                                <textarea class="form-control" name="observaciones" rows="4" required></textarea>
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-3">
+                                            <label class="col-sm-2 col-form-label">Estado:</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" name="estado" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-3">
+                                            <div class="col-sm-10 offset-sm-2">
+                                                <button type="submit" class="btn btn-primary">Guardar</button>
+                                            </div>
+                                        </div>
                                     </form>
+
 
                                 </div>
                                 <!-- end cardbody -->
