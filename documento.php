@@ -114,14 +114,6 @@
                                                 <input type="number" class="form-control" name="anio" required>
                                             </div>
                                         </div>
-                                        <div class="mb-4">
-                                            <label class="form-label">Seleccionar Año</label>
-                                            <div class="input-group">
-                                                <input type="text" class="form-control" placeholder="Año" data-date-format="yyyy" data-provide="datepicker" name="anio">
-                                                <span class="input-group-text"><i class="mdi mdi-calendar"></i></span>
-                                            </div>
-                                        </div>
-
 
                                         <div class="row mb-3">
                                             <label class="col-sm-2 col-form-label">Entidad Remitente:</label>
@@ -175,7 +167,29 @@
                                         <div class="row mb-3">
                                             <label class="col-sm-2 col-form-label">Estado:</label>
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control" name="estado" required>
+                                                <select class="form-control select2" name="estado">
+                                                    <!-- Agregar opciones dinámicamente desde la base de datos -->
+                                                    <?php
+                                                    // Incluir el archivo de conexión a la base de datos
+                                                    require 'includes/conTest.php';
+
+                                                    // Consulta SQL para obtener los nombres de la tabla "usuarios"
+                                                    $sql = "SELECT * FROM estadoDocumento";
+                                                    $result = $conn->query($sql);
+
+                                                    if ($result->num_rows > 0) {
+                                                        while ($row = $result->fetch_assoc()) {
+                                                            $id_documento_tipo  = $row["id_estado_documento "];
+                                                            $nombre = $row["nombre_estado_documento"];
+                                                            /* $cargo = $row["cargo"]; */
+                                                            echo "<option value='$id_documento_tipo'>$nombre</option>";
+                                                        }
+                                                    }
+
+                                                    // Cerrar la conexión a la base de datos
+                                                    $conn->close();
+                                                    ?>
+                                                </select>
                                             </div>
                                         </div>
 
