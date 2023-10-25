@@ -75,7 +75,7 @@
                                                     require 'includes/conTest.php';
 
                                                     // Consulta SQL para obtener los nombres de la tabla "usuarios"
-                                                    $sql = "SELECT * FROM nuevoDocumento nd inner join documentos_tipo dt on nd.id= dt.id_documento_tipo";
+                                                    $sql = "SELECT nd.id,nd.codigo,nd.numero,dt.nombre FROM nuevoDocumento nd inner join documentos_tipo dt on nd.id= dt.id_documento_tipo";
                                                     $result = $conn->query($sql);
 
                                                     if ($result->num_rows > 0) {
@@ -85,7 +85,7 @@
                                                             $tipo_documento = $row["tipo_documento"];
                                                             $numero = $row["numero"];
                                                             $nombre = $row["nombre"];
-                                                            echo "<option value='$id'>$nombre.'-'.$codigo.'-'.$numero</option>";
+                                                            echo "<option value='$id'>$nombre-$codigo-$numero</option>";
                                                         }
                                                     }
 
