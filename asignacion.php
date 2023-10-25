@@ -68,7 +68,7 @@
                                         <div class="row mb-3">
                                             <label class="col-sm-2 col-form-label">Buscar documento:</label>
                                             <div class="col-sm-10">
-                                                <select class="form-control select2" name="tipo_documento">
+                                                <select class="form-control select2" name="documento">
                                                     <!-- Agregar opciones dinámicamente desde la base de datos -->
                                                     <?php
                                                     // Incluir el archivo de conexión a la base de datos
@@ -85,7 +85,7 @@
                                                             $tipo_documento = $row["tipo_documento"];
                                                             $numero = $row["numero"];
                                                             $nombre = $row["nombre"];
-                                                            echo "<option value='$id'>$nombre | $codigo | $numero</option>";
+                                                            echo "<option value='$id'>$nombre / $codigo / $numero</option>";
                                                         }
                                                     }
 
@@ -101,7 +101,7 @@
                                         <div class="row mb-3">
                                             <label class="col-sm-2 col-form-label">Seleccionar Courier:</label>
                                             <div class="col-sm-10">
-                                                <select class="form-control select2" name="estado">
+                                                <select class="form-control select2" name="courier">
                                                     <!-- Agregar opciones dinámicamente desde la base de datos -->
                                                     <?php
                                                     // Incluir el archivo de conexión a la base de datos
@@ -117,6 +117,33 @@
                                                             $nombres = $fila["nombres"];
                                                             $telefono = $fila["telefono"];
                                                             echo "<option value='$user_id'>$nombres / $telefono </option>";
+                                                        }
+                                                    }
+
+                                                    // Cerrar la conexión a la base de datos
+                                                    $conn->close();
+
+                                                    ?>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <label class="col-sm-2 col-form-label">Seleccionar Dependencia:</label>
+                                            <div class="col-sm-10">
+                                                <select class="form-control select2" name="dependencia">
+                                                    <?php
+                                                    // Incluir el archivo de conexión a la base de datos
+                                                    require 'includes/conTest.php';
+
+                                                    $consulta2 = "SELECT * FROM dependencias";
+                                                    $resultado2 = $conn->query($consulta2);
+
+                                                    if ($resultado2->num_rows > 0) {
+                                                        while ($fila2 = $resultado2->fetch_assoc()) {
+                                                            $id_dependencia = $fila2["id_dependencia"];
+                                                            $nombre = $fila2["nombre"];
+                                                            $sigla = $fila2["sigla"];
+                                                            echo "<option value='$id_dependencia'>$nombre / $sigla </option>";
                                                         }
                                                     }
 
