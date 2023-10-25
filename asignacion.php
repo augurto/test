@@ -210,7 +210,7 @@
                                                     echo "<td>"; // Columna para el dropdown 
                                             ?>
                                                     <!-- Dropdown -->
-                                                    <div>
+                                                    <div class="dropdown mt-2">
                                                         <?php
                                                         $estado_asignacion = $row_asignacion['estado_asignacion'];
                                                         $btn_class = 'btn-secondary';
@@ -231,8 +231,8 @@
                                                         </button>
 
                                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton_<?php echo $row_asignacion['id_documento']; ?>">
-                                                        <a class="dropdown-item" href="include/estadoAsignacion.php?id_documento=<?php echo $row_asignacion['id_documento']; ?>&valor=1">Aceptar</a>
-                                                        <a class="dropdown-item" href="include/estadoAsignacion.php?id_documento=<?php echo $row_asignacion['id_documento']; ?>&valor=2">Rechazar</a>
+                                                        <a class="dropdown-item" href="includes/estadoAsignacion.php?id_documento=<?php echo $row_asignacion['id_documento']; ?>&valor=1">Aceptar</a>
+                                                        <a class="dropdown-item" href="includes/estadoAsignacion.php?id_documento=<?php echo $row_asignacion['id_documento']; ?>&valor=2">Rechazar</a>
 
 
                                                         </div>
