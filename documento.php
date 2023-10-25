@@ -86,7 +86,7 @@
 
                                                     if ($result->num_rows > 0) {
                                                         while ($row = $result->fetch_assoc()) {
-                                                            $id_documento_tipo  = $row["id_documento_tipo "];
+                                                            $id_documento_tipo  = $row["id_documento_tipo"];
                                                             $nombre = $row["nombre"];
                                                             /* $cargo = $row["cargo"]; */
                                                             echo "<option value='$id_documento_tipo'>$nombre</option>";
@@ -179,10 +179,10 @@
 
                                                     if ($result->num_rows > 0) {
                                                         while ($row = $result->fetch_assoc()) {
-                                                            $id_documento_tipo  = $row["id_estado_documento "];
-                                                            $nombre = $row["nombre_estado_documento"];
+                                                            $id_estado_documento   = $row["id_estado_documento  "];
+                                                            $nombre_estado_documento = $row["nombre_estado_documento"];
                                                             /* $cargo = $row["cargo"]; */
-                                                            echo "<option value='$id_documento_tipo'>$nombre</option>";
+                                                            echo "<option value='$id_estado_documento'>$nombre_estado_documento</option>";
                                                         }
                                                     }
 

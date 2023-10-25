@@ -21,24 +21,20 @@ date_default_timezone_set('America/Lima');
 // Obtener la fecha y hora actual
 $fecha_creacion = date('Y-m-d H:i:s');
 
-// Consulta SQL para insertar los datos en la tabla nuevoDocumento
-$sql = "INSERT INTO nuevoDocumento (codigo, tipo_documento, numero, anio, entidad_remitente, suscrito, destinatario_o_cargo, entidad, carpeta_fiscal, direccion, observaciones, estado, fecha_creacion) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+// Consulta SQL para insertar los datos en la tabla nuevoDocumento sin preparar
+$sql = "INSERT INTO nuevoDocumento (codigo, tipo_documento, numero, anio, entidad_remitente, suscrito, destinatario_o_cargo, entidad, carpeta_fiscal, direccion, observaciones, estado, fecha_creacion) VALUES ('$codigo', '$tipo_documento', $numero, $anio, '$entidad_remitente', '$suscrito', '$destinatario_o_cargo', '$entidad', '$carpeta_fiscal', '$direccion', '$observaciones', '$estado', '$fecha_creacion')";
 
-// Preparar la declaración
-$stmt = $conn->prepare($sql);
-
-// Vincular los parámetros
-$stmt->bind_param("ssiiissssssss", $codigo, $tipo_documento, $numero, $anio, $entidad_remitente, $suscrito, $destinatario_o_cargo, $entidad, $carpeta_fiscal, $direccion, $observaciones, $estado, $fecha_creacion);
-
-// Ejecutar la declaración
-if ($stmt->execute()) {
+if ($conn->query($sql) === TRUE) {
     // Registro de un mensaje de éxito en el registro del servidor
     error_log("Nuevo registro insertado en la tabla nuevoDocumento con éxito.");
+    
+    // Redireccionar a la página ../documento.php
+    header('Location: ../documento.php');
 } else {
     // Registro de un mensaje de error en el registro del servidor
-    error_log("Error al insertar el registro: " . $stmt->error);
+    error_log("Error al insertar el registro: " . $conn->error);
 }
 
-// Cerrar la declaración
-$stmt->close();
+// Cerrar la conexión a la base de datos
+$conn->close();
 ?>
