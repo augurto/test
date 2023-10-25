@@ -216,10 +216,10 @@
                                                         $btn_class = 'btn-secondary';
                                                         $btn_text = 'Opciones';
 
-                                                        if ($estado_asignacion == 1) {
+                                                        if ($estado_asignacion == 3) {
                                                             $btn_class = 'btn-primary';
                                                             $btn_text = 'Aceptado';
-                                                        } elseif ($estado_asignacion == 2) {
+                                                        } elseif ($estado_asignacion == 4) {
                                                             $btn_class = 'btn-danger';
                                                             $btn_text = 'Rechazado';
                                                         }
@@ -231,8 +231,8 @@
                                                         </button>
 
                                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton_<?php echo $row_asignacion['id_documento']; ?>">
-                                                        <a class="dropdown-item" href="includes/estadoAsignacion.php?id_documento=<?php echo $row_asignacion['id_documento']; ?>&valor=1">Aceptar</a>
-                                                        <a class="dropdown-item" href="includes/estadoAsignacion.php?id_documento=<?php echo $row_asignacion['id_documento']; ?>&valor=2">Rechazar</a>
+                                                        <a class="dropdown-item" href="includes/estadoAsignacion.php?id_documento=<?php echo $row_asignacion['id_documento']; ?>&valor=3">Aceptar</a>
+                                                        <a class="dropdown-item" href="includes/estadoAsignacion.php?id_documento=<?php echo $row_asignacion['id_documento']; ?>&valor=4">Rechazar</a>
 
 
                                                         </div>
