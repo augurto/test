@@ -196,7 +196,7 @@
                                             include 'includes/conTest.php';
 
                                             // Consulta SQL para obtener los datos de la tabla nuevaAsignacion
-                                            $sql_asignacion = "SELECT * FROM nuevaAsignacion";
+                                            $sql_asignacion = "SELECT na.id_documento,na.id_courier,na.id_dependencia, na.fecha_asignacion, na.estado_asignacion FROM nuevaAsignacion na inner join";
 
                                             $result_asignacion = $conn->query($sql_asignacion);
 
@@ -207,18 +207,32 @@
                                                     echo "<td>" . $row_asignacion['id_courier'] . "</td>"; // Nombre de campo a reemplazar
                                                     echo "<td>" . $row_asignacion['id_dependencia'] . "</td>"; // Nombre de campo a reemplazar
                                                     echo "<td>" . $row_asignacion['fecha_asignacion'] . "</td>"; // Nombre de campo a reemplazar
-                                                    echo "<td>"; // Columna para el dropdown
+                                                    echo "<td>"; // Columna para el dropdown 
                                             ?>
                                                     <!-- Dropdown -->
                                                     <div class="dropdown mt-2">
-                                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton_<?php echo $row_asignacion['id_documento']; ?>" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                            Opciones
+                                                        <?php
+                                                        $estado_asignacion = $row_asignacion['estado_asignacion'];
+                                                        $btn_class = 'btn-secondary';
+                                                        $btn_text = 'Opciones';
+
+                                                        if ($estado_asignacion == 1) {
+                                                            $btn_class = 'btn-primary';
+                                                            $btn_text = 'Aceptado';
+                                                        } elseif ($estado_asignacion == 2) {
+                                                            $btn_class = 'btn-danger';
+                                                            $btn_text = 'Rechazado';
+                                                        }
+                                                        ?>
+
+                                                        <button class="btn <?php echo $btn_class; ?> dropdown-toggle" type="button" id="dropdownMenuButton_<?php echo $row_asignacion['id_documento']; ?>" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                            <?php echo $btn_text; ?>
                                                             <i class="mdi mdi-chevron-down"></i>
                                                         </button>
+
                                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton_<?php echo $row_asignacion['id_documento']; ?>">
-                                                            <a class="dropdown-item" href="asignacion.php?id_documento=<?php echo $row_asignacion['id_documento']; ?>">Acción 1</a>
-                                                            <a class="dropdown-item" href="asignacion.php?id_documento=<?php echo $row_asignacion['id_documento']; ?>">Acción 2</a>
-                                                            <a class="dropdown-item" href="asignacion.php?id_documento=<?php echo $row_asignacion['id_documento']; ?>">Acción 3</a>
+                                                            <a class="dropdown-item" href="asignacion.php?id_documento=<?php echo $row_asignacion['id_documento']; ?>">Aceptar</a>
+                                                            <a class="dropdown-item" href="asignacion.php?id_documento=<?php echo $row_asignacion['id_documento']; ?>">Rechazar</a>
 
                                                         </div>
                                                     </div>
