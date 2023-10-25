@@ -173,21 +173,21 @@
                                                     // Incluir el archivo de conexión a la base de datos
                                                     require 'includes/conTest.php';
 
-                                                    // Consulta SQL para obtener los nombres de la tabla "usuarios"
-                                                    $sql = "SELECT * FROM estadoDocumento";
-                                                    $result = $conn->query($sql);
+                                                    // Consulta SQL para obtener los estados de la tabla "estadoDocumento"
+                                                    $consulta = "SELECT * FROM estadoDocumento";
+                                                    $resultado = $conn->query($consulta);
 
-                                                    if ($result->num_rows > 0) {
-                                                        while ($row = $result->fetch_assoc()) {
-                                                            $id_estado_documento   = $row["id_estado_documento  "];
-                                                            $nombre_estado_documento = $row["nombre_estado_documento"];
-                                                            /* $cargo = $row["cargo"]; */
+                                                    if ($resultado->num_rows > 0) {
+                                                        while ($fila = $resultado->fetch_assoc()) {
+                                                            $id_estado_documento = $fila["id_estado_documento"];
+                                                            $nombre_estado_documento = $fila["nombre_estado_documento"];
                                                             echo "<option value='$id_estado_documento'>$nombre_estado_documento</option>";
                                                         }
                                                     }
 
                                                     // Cerrar la conexión a la base de datos
                                                     $conn->close();
+
                                                     ?>
                                                 </select>
                                             </div>

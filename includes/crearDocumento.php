@@ -15,6 +15,7 @@ $direccion = $_POST['direccion'];
 $observaciones = $_POST['observaciones'];
 $estado = $_POST['estado'];
 
+
 // Establecer la zona horaria a Perú
 date_default_timezone_set('America/Lima');
 
