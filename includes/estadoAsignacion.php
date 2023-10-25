@@ -31,7 +31,7 @@ try {
     $conn->commit();
 
     // Éxito: ambas actualizaciones se realizaron correctamente
-    header('Location: ../documento.php'); // Redirige a la página documento.php o a donde desees
+    header('Location: ../asignacion.php'); // Redirige a la página documento.php o a donde desees
 } catch (Exception $e) {
     // Error en la actualización, deshacer ambas transacciones
     $conn->rollback();

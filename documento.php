@@ -260,7 +260,21 @@
                                                     echo "<td>" . $row['carpeta_fiscal'] . "</td>";
                                                     echo "<td>" . $row['direccion'] . "</td>";
                                                     echo "<td>" . $row['observaciones'] . "</td>";
-                                                    echo "<td>" . $row['estado'] . "</td>";
+                                                    // Aquí se verifica el valor de $row['estado'] y se muestra la etiqueta correspondiente
+                                                    echo "<td>";
+                                                    if ($row['estado'] == 1) {
+                                                        echo '<span class="badge rounded-pill bg-primary">Ingresado</span>';
+                                                    } elseif ($row['estado'] == 2) {
+                                                        echo '<span class="badge rounded-pill bg-info">Cargo</span>';
+                                                    } elseif ($row['estado'] == 3) {
+                                                        echo '<span class="badge rounded-pill bg-success">Aceptado</span>';
+                                                    } elseif ($row['estado'] == 4) {
+                                                        echo '<span class="badge rounded-pill bg-danger">Rechazado</span>';
+                                                    } else {
+                                                        // Manejar otros valores de $row['estado'] si es necesario
+                                                        echo '<span class="badge rounded-pill bg-secondary">Desconocido</span>';
+                                                    }
+                                                    echo "</td>";
                                                     echo "<td>" . $row['fecha_creacion'] . "</td>";
                                                     echo "</tr>";
                                                 }
@@ -272,6 +286,12 @@
                                             $conn->close();
                                             ?>
                                         </tbody>
+                                        <span class="badge rounded-pill bg-primary">Primary</span>
+                                                <span class="badge rounded-pill bg-success">Success</span>
+                                                <span class="badge rounded-pill bg-info">Info</span>
+                                                <span class="badge rounded-pill bg-warning">Warning</span>
+                                                <span class="badge rounded-pill bg-danger">Danger</span>
+                                                <span class="badge rounded-pill bg-dark">Dark</span>
                                     </table>
 
                                 </div>
