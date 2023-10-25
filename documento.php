@@ -223,6 +223,7 @@
                                             <tr>
                                                 <th>Código</th>
                                                 <th>Tipo de Documento</th>
+                                                <th>Estado</th>
                                                 <th>Número</th>
                                                 <th>Año</th>
                                                 <th>Entidad Remitente</th>
@@ -231,9 +232,8 @@
                                                 <th>Entidad</th>
                                                 <th>Carpeta Fiscal</th>
                                                 <th>Dirección</th>
-                                                <th>Observaciones</th>
-                                                <th>Estado</th>
                                                 <th>Fecha de Creación</th>
+                                                <th>Observaciones</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -242,7 +242,7 @@
                                             include 'includes/conTest.php';
 
                                             // Consulta SQL para obtener los datos de la tabla nuevoDocumento
-                                            $sql = "SELECT * FROM nuevoDocumento";
+                                            $sql = "SELECT * FROM nuevoDocumento order by id desc";
 
                                             $result = $conn->query($sql);
 
@@ -251,15 +251,7 @@
                                                     echo "<tr>";
                                                     echo "<td>" . $row['codigo'] . "</td>";
                                                     echo "<td>" . $row['tipo_documento'] . "</td>";
-                                                    echo "<td>" . $row['numero'] . "</td>";
-                                                    echo "<td>" . $row['anio'] . "</td>";
-                                                    echo "<td>" . $row['entidad_remitente'] . "</td>";
-                                                    echo "<td>" . $row['suscrito'] . "</td>";
-                                                    echo "<td>" . $row['destinatario_o_cargo'] . "</td>";
-                                                    echo "<td>" . $row['entidad'] . "</td>";
-                                                    echo "<td>" . $row['carpeta_fiscal'] . "</td>";
-                                                    echo "<td>" . $row['direccion'] . "</td>";
-                                                    echo "<td>" . $row['observaciones'] . "</td>";
+                                                      
                                                     // Aquí se verifica el valor de $row['estado'] y se muestra la etiqueta correspondiente
                                                     echo "<td>";
                                                     if ($row['estado'] == 1) {
@@ -275,7 +267,16 @@
                                                         echo '<span class="badge rounded-pill bg-secondary">Desconocido</span>';
                                                     }
                                                     echo "</td>";
+                                                    echo "<td>" . $row['numero'] . "</td>";
+                                                    echo "<td>" . $row['anio'] . "</td>";
+                                                    echo "<td>" . $row['entidad_remitente'] . "</td>";
+                                                    echo "<td>" . $row['suscrito'] . "</td>";
+                                                    echo "<td>" . $row['destinatario_o_cargo'] . "</td>";
+                                                    echo "<td>" . $row['entidad'] . "</td>";
+                                                    echo "<td>" . $row['carpeta_fiscal'] . "</td>";
+                                                    echo "<td>" . $row['direccion'] . "</td>";
                                                     echo "<td>" . $row['fecha_creacion'] . "</td>";
+                                                    echo "<td>" . $row['observaciones'] . "</td>";
                                                     echo "</tr>";
                                                 }
                                             } else {
@@ -286,12 +287,7 @@
                                             $conn->close();
                                             ?>
                                         </tbody>
-                                        <span class="badge rounded-pill bg-primary">Primary</span>
-                                                <span class="badge rounded-pill bg-success">Success</span>
-                                                <span class="badge rounded-pill bg-info">Info</span>
-                                                <span class="badge rounded-pill bg-warning">Warning</span>
-                                                <span class="badge rounded-pill bg-danger">Danger</span>
-                                                <span class="badge rounded-pill bg-dark">Dark</span>
+                                       
                                     </table>
 
                                 </div>
