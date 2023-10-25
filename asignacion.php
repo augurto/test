@@ -63,8 +63,8 @@
 
                                     <h4 class="card-title">Asignar Documento</h4>
 
-                                    <form action="includes/crearDocumento.php" method="POST">
-                                        
+                                    <form action="includes/crearAsignacion.php" method="POST">
+
                                         <div class="row mb-3">
                                             <label class="col-sm-2 col-form-label">Buscar documento:</label>
                                             <div class="col-sm-10">
@@ -96,7 +96,7 @@
                                             </div>
                                         </div>
 
-                                       
+
 
                                         <div class="row mb-3">
                                             <label class="col-sm-2 col-form-label">Seleccionar Courier:</label>
@@ -183,19 +183,10 @@
                                     <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                         <thead>
                                             <tr>
-                                                <th>Código</th>
-                                                <th>Tipo de Documento</th>
-                                                <th>Número</th>
-                                                <th>Año</th>
-                                                <th>Entidad Remitente</th>
-                                                <th>Suscrito</th>
-                                                <th>Destinatario o Cargo</th>
-                                                <th>Entidad</th>
-                                                <th>Carpeta Fiscal</th>
-                                                <th>Dirección</th>
-                                                <th>Observaciones</th>
-                                                <th>Estado</th>
-                                                <th>Fecha de Creación</th>
+                                                <th>Código de Documento</th>
+                                                <th>Courier</th>
+                                                <th>Dependencia</th>
+                                                <th>Fecha de Asignación</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -203,27 +194,18 @@
                                             // Incluir el archivo con la conexión a la base de datos
                                             include 'includes/conTest.php';
 
-                                            // Consulta SQL para obtener los datos de la tabla nuevoDocumento
-                                            $sql = "SELECT * FROM nuevoDocumento";
+                                            // Consulta SQL para obtener los datos de la tabla nuevaAsignacion
+                                            $sql_asignacion = "SELECT * FROM nuevaAsignacion";
 
-                                            $result = $conn->query($sql);
+                                            $result_asignacion = $conn->query($sql_asignacion);
 
-                                            if ($result->num_rows > 0) {
-                                                while ($row = $result->fetch_assoc()) {
+                                            if ($result_asignacion->num_rows > 0) {
+                                                while ($row_asignacion = $result_asignacion->fetch_assoc()) {
                                                     echo "<tr>";
-                                                    echo "<td>" . $row['codigo'] . "</td>";
-                                                    echo "<td>" . $row['tipo_documento'] . "</td>";
-                                                    echo "<td>" . $row['numero'] . "</td>";
-                                                    echo "<td>" . $row['anio'] . "</td>";
-                                                    echo "<td>" . $row['entidad_remitente'] . "</td>";
-                                                    echo "<td>" . $row['suscrito'] . "</td>";
-                                                    echo "<td>" . $row['destinatario_o_cargo'] . "</td>";
-                                                    echo "<td>" . $row['entidad'] . "</td>";
-                                                    echo "<td>" . $row['carpeta_fiscal'] . "</td>";
-                                                    echo "<td>" . $row['direccion'] . "</td>";
-                                                    echo "<td>" . $row['observaciones'] . "</td>";
-                                                    echo "<td>" . $row['estado'] . "</td>";
-                                                    echo "<td>" . $row['fecha_creacion'] . "</td>";
+                                                    echo "<td>" . $row_asignacion['documento'] . "</td>"; // Nombre de campo a reemplazar
+                                                    echo "<td>" . $row_asignacion['courier'] . "</td>"; // Nombre de campo a reemplazar
+                                                    echo "<td>" . $row_asignacion['dependencia'] . "</td>"; // Nombre de campo a reemplazar
+                                                    echo "<td>" . $row_asignacion['fecha_asignacion'] . "</td>"; // Nombre de campo a reemplazar
                                                     echo "</tr>";
                                                 }
                                             } else {
@@ -232,9 +214,11 @@
 
                                             // Cerrar la conexión a la base de datos
                                             $conn->close();
+
                                             ?>
                                         </tbody>
                                     </table>
+
 
                                 </div>
                             </div>
