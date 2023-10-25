@@ -202,9 +202,9 @@
                                             if ($result_asignacion->num_rows > 0) {
                                                 while ($row_asignacion = $result_asignacion->fetch_assoc()) {
                                                     echo "<tr>";
-                                                    echo "<td>" . $row_asignacion['documento'] . "</td>"; // Nombre de campo a reemplazar
-                                                    echo "<td>" . $row_asignacion['courier'] . "</td>"; // Nombre de campo a reemplazar
-                                                    echo "<td>" . $row_asignacion['dependencia'] . "</td>"; // Nombre de campo a reemplazar
+                                                    echo "<td>" . $row_asignacion['id_documento'] . "</td>"; // Nombre de campo a reemplazar
+                                                    echo "<td>" . $row_asignacion['id_courier'] . "</td>"; // Nombre de campo a reemplazar
+                                                    echo "<td>" . $row_asignacion['id_dependencia'] . "</td>"; // Nombre de campo a reemplazar
                                                     echo "<td>" . $row_asignacion['fecha_asignacion'] . "</td>"; // Nombre de campo a reemplazar
                                                     echo "</tr>";
                                                 }
