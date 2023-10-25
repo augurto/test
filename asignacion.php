@@ -211,14 +211,15 @@
                                             ?>
                                                     <!-- Dropdown -->
                                                     <div class="dropdown mt-2">
-                                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton_<?php echo $row_asignacion['id']; ?>" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton_<?php echo $row_asignacion['id_documento']; ?>" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                             Opciones
                                                             <i class="mdi mdi-chevron-down"></i>
                                                         </button>
-                                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton_<?php echo $row_asignacion['id']; ?>">
-                                                            <a class="dropdown-item" href="#">Acción 1</a>
-                                                            <a class="dropdown-item" href="#">Acción 2</a>
-                                                            <a class="dropdown-item" href="#">Acción 3</a>
+                                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton_<?php echo $row_asignacion['id_documento']; ?>">
+                                                            <a class="dropdown-item" href="asignacion.php?id_documento=<?php echo $row_asignacion['id_documento']; ?>">Acción 1</a>
+                                                            <a class="dropdown-item" href="asignacion.php?id_documento=<?php echo $row_asignacion['id_documento']; ?>">Acción 2</a>
+                                                            <a class="dropdown-item" href="asignacion.php?id_documento=<?php echo $row_asignacion['id_documento']; ?>">Acción 3</a>
+
                                                         </div>
                                                     </div>
                                             <?php
