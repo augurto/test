@@ -15,7 +15,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="documento.php" class="waves-effect">
+                    <a href="asignacion.php" class="waves-effect">
                         <i class="ri-dashboard-line"></i><span class="badge rounded-pill bg-success float-end">4</span>
                         <span>Asignaciones</span>
                     </a>

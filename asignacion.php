@@ -108,14 +108,15 @@
                                                     require 'includes/conTest.php';
 
                                                     // Consulta SQL para obtener los estados de la tabla "estadoDocumento"
-                                                    $consulta = "SELECT * FROM estadoDocumento";
+                                                    $consulta = "SELECT * FROM users";
                                                     $resultado = $conn->query($consulta);
 
                                                     if ($resultado->num_rows > 0) {
                                                         while ($fila = $resultado->fetch_assoc()) {
-                                                            $id_estado_documento = $fila["id_estado_documento"];
-                                                            $nombre_estado_documento = $fila["nombre_estado_documento"];
-                                                            echo "<option value='$id_estado_documento'>$nombre_estado_documento</option>";
+                                                            $user_id = $fila["user_id"];
+                                                            $nombres = $fila["nombres"];
+                                                            $telefono = $fila["telefono"];
+                                                            echo "<option value='$user_id'>$nombres / $telefono </option>";
                                                         }
                                                     }
 
