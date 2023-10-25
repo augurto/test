@@ -213,19 +213,71 @@
                     <!-- INICIO TABLA -->
 
                     <div class="row">
-                            <div class="col-12">
-                                <div class="card">
-                                    <div class="card-body">
-        
-                                        <h4 class="card-title">Ultimos 100 Documentos</h4>
-                                        <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
-                                            
-                                            
-                                        </table>
-                                    </div>
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-body">
+
+                                    <h4 class="card-title">Ultimos 100 Documentos</h4>
+                                    <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                        <thead>
+                                            <tr>
+                                                <th>Código</th>
+                                                <th>Tipo de Documento</th>
+                                                <th>Número</th>
+                                                <th>Año</th>
+                                                <th>Entidad Remitente</th>
+                                                <th>Suscrito</th>
+                                                <th>Destinatario o Cargo</th>
+                                                <th>Entidad</th>
+                                                <th>Carpeta Fiscal</th>
+                                                <th>Dirección</th>
+                                                <th>Observaciones</th>
+                                                <th>Estado</th>
+                                                <th>Fecha de Creación</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+                                            // Incluir el archivo con la conexión a la base de datos
+                                            include 'includes/conTest.php';
+
+                                            // Consulta SQL para obtener los datos de la tabla nuevoDocumento
+                                            $sql = "SELECT * FROM nuevoDocumento";
+
+                                            $result = $conn->query($sql);
+
+                                            if ($result->num_rows > 0) {
+                                                while ($row = $result->fetch_assoc()) {
+                                                    echo "<tr>";
+                                                    echo "<td>" . $row['codigo'] . "</td>";
+                                                    echo "<td>" . $row['tipo_documento'] . "</td>";
+                                                    echo "<td>" . $row['numero'] . "</td>";
+                                                    echo "<td>" . $row['anio'] . "</td>";
+                                                    echo "<td>" . $row['entidad_remitente'] . "</td>";
+                                                    echo "<td>" . $row['suscrito'] . "</td>";
+                                                    echo "<td>" . $row['destinatario_o_cargo'] . "</td>";
+                                                    echo "<td>" . $row['entidad'] . "</td>";
+                                                    echo "<td>" . $row['carpeta_fiscal'] . "</td>";
+                                                    echo "<td>" . $row['direccion'] . "</td>";
+                                                    echo "<td>" . $row['observaciones'] . "</td>";
+                                                    echo "<td>" . $row['estado'] . "</td>";
+                                                    echo "<td>" . $row['fecha_creacion'] . "</td>";
+                                                    echo "</tr>";
+                                                }
+                                            } else {
+                                                echo "No se encontraron registros.";
+                                            }
+
+                                            // Cerrar la conexión a la base de datos
+                                            $conn->close();
+                                            ?>
+                                        </tbody>
+                                    </table>
+
                                 </div>
-                            </div> <!-- end col -->
-                        </div> <!-- end row -->
+                            </div>
+                        </div> <!-- end col -->
+                    </div> <!-- end row -->
                     <!-- FIN TABLA -->
 
                     <!-- FIN DATOS -->
