@@ -179,7 +179,7 @@
                             <div class="card">
                                 <div class="card-body">
 
-                                    <h4 class="card-title">Ultimos 100 Documentos</h4>
+                                    <h4 class="card-title">Ultimos 100 Asignaciones</h4>
                                     <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                         <thead>
                                             <tr>
@@ -187,6 +187,7 @@
                                                 <th>Courier</th>
                                                 <th>Dependencia</th>
                                                 <th>Fecha de Asignación</th>
+                                                <th>Acción</th> <!-- Nueva columna para el dropdown -->
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -206,6 +207,22 @@
                                                     echo "<td>" . $row_asignacion['id_courier'] . "</td>"; // Nombre de campo a reemplazar
                                                     echo "<td>" . $row_asignacion['id_dependencia'] . "</td>"; // Nombre de campo a reemplazar
                                                     echo "<td>" . $row_asignacion['fecha_asignacion'] . "</td>"; // Nombre de campo a reemplazar
+                                                    echo "<td>"; // Columna para el dropdown
+                                            ?>
+                                                    <!-- Dropdown -->
+                                                    <div class="dropdown mt-2">
+                                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton_<?php echo $row_asignacion['id']; ?>" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                            Opciones
+                                                            <i class="mdi mdi-chevron-down"></i>
+                                                        </button>
+                                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton_<?php echo $row_asignacion['id']; ?>">
+                                                            <a class="dropdown-item" href="#">Acción 1</a>
+                                                            <a class="dropdown-item" href="#">Acción 2</a>
+                                                            <a class="dropdown-item" href="#">Acción 3</a>
+                                                        </div>
+                                                    </div>
+                                            <?php
+                                                    echo "</td>";
                                                     echo "</tr>";
                                                 }
                                             } else {
@@ -214,7 +231,6 @@
 
                                             // Cerrar la conexión a la base de datos
                                             $conn->close();
-
                                             ?>
                                         </tbody>
                                     </table>
