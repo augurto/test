@@ -242,7 +242,9 @@
                                             include 'includes/conTest.php';
 
                                             // Consulta SQL para obtener los datos de la tabla nuevoDocumento
-                                            $sql = "SELECT * FROM nuevoDocumento nd inner join documentos_tipo dt on dt.id_documento_tipo=nd.tipo_documento order by id desc";
+                                            $sql = "SELECT nd.codigo, dt.nombre,nd.estado,nd.numero, nd.anio,nd.entidad_remitente,nd.suscrito, nd.destinatario_o_cargo, nd.entidad,
+                                            nd.carpeta_fiscal, nd.direccion,nd.fecha_creacion,nd.observaciones 
+                                             FROM nuevoDocumento nd inner join documentos_tipo dt on dt.id_documento_tipo=nd.tipo_documento order by id desc";
 
                                             $result = $conn->query($sql);
 
