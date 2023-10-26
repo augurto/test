@@ -242,7 +242,7 @@
                                             include 'includes/conTest.php';
 
                                             // Consulta SQL para obtener los datos de la tabla nuevoDocumento
-                                            $sql = "SELECT * FROM nuevoDocumento order by id desc";
+                                            $sql = "SELECT * FROM nuevoDocumento nd inner join documentos_tipo dt on dt.id_documento_tipo=nd.tipo_documento order by id desc";
 
                                             $result = $conn->query($sql);
 
@@ -250,7 +250,7 @@
                                                 while ($row = $result->fetch_assoc()) {
                                                     echo "<tr>";
                                                     echo "<td>" . $row['codigo'] . "</td>";
-                                                    echo "<td>" . $row['tipo_documento'] . "</td>";
+                                                    echo "<td>" . $row['nombre'] . "</td>";
                                                       
                                                     // Aquí se verifica el valor de $row['estado'] y se muestra la etiqueta correspondiente
                                                     echo "<td>";
