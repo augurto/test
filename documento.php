@@ -64,10 +64,37 @@
                                     <h4 class="card-title">Crear Documento</h4>
 
                                     <form action="includes/crearDocumento.php" method="POST">
+
+                                        <?php
+                                        // Incluir el archivo con la conexión a la base de datos
+                                        include 'includes/conTest.php';
+
+                                        // Consulta SQL para obtener el último ID
+                                        $sql_max_id = "SELECT MAX(id) as max_id FROM nuevoDocumento";
+                                        $result_max_id = $conn->query($sql_max_id);
+
+                                        $max_id = 0; // Valor predeterminado si no se encuentra ningún registro
+                                        if ($result_max_id->num_rows > 0) {
+                                            $row_max_id = $result_max_id->fetch_assoc();
+                                            $max_id = $row_max_id['max_id'] + 1;
+                                        }
+
+                                        // Cerrar la conexión a la base de datos
+                                        $conn->close();
+                                        ?>
+
+                                        <!-- Luego, en tu formulario, puedes establecer el valor predeterminado del campo "Código" -->
                                         <div class="row mb-3">
                                             <label class="col-sm-2 col-form-label">Código:</label>
                                             <div class="col-sm-10">
-                                                <input type="hidden" class="form-control" name="codigo">
+                                                <input type="text" class="form-control" name="codigo" value="<?php echo $max_id; ?>">
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-3">
+                                            <label class="col-sm-2 col-form-label">Código:</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" name="codigo">
                                             </div>
                                         </div>
 
@@ -118,7 +145,7 @@
                                         <div class="row mb-3">
                                             <label class="col-sm-2 col-form-label">Entidad Remitente:</label>
                                             <div class="col-sm-10">
-                                                
+
                                                 <select class="form-control select2" name="entidad_remitente">
                                                     <!-- Agregar opciones dinámicamente desde la base de datos -->
                                                     <?php
@@ -177,11 +204,11 @@
                                         <div class="row mb-3">
                                             <label class="col-sm-2 col-form-label">Carpeta Fiscal:</label>
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control" name="carpeta_fiscal" >
+                                                <input type="text" class="form-control" name="carpeta_fiscal">
                                             </div>
                                         </div>
 
-                                       
+
                                         <div class="row mb-3">
                                             <label class="col-sm-2 col-form-label">Observaciones:</label>
                                             <div class="col-sm-10">
@@ -278,7 +305,7 @@
                                                     echo "<tr>";
                                                     echo "<td>" . $row['codigo'] . "</td>";
                                                     echo "<td>" . $row['nombre'] . "</td>";
-                                                      
+
                                                     // Aquí se verifica el valor de $row['estado'] y se muestra la etiqueta correspondiente
                                                     echo "<td>";
                                                     if ($row['estado'] == 1) {
@@ -314,7 +341,7 @@
                                             $conn->close();
                                             ?>
                                         </tbody>
-                                       
+
                                     </table>
 
                                 </div>
