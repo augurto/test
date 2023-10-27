@@ -76,7 +76,7 @@
                                         $max_id = 0; // Valor predeterminado si no se encuentra ningún registro
                                         if ($result_max_id->num_rows > 0) {
                                             $row_max_id = $result_max_id->fetch_assoc();
-                                            $max_id = $row_max_id['max_id'] + 1;
+                                            $max_id = '00'.$row_max_id['max_id'] + 1;
                                         }
 
                                         // Cerrar la conexión a la base de datos
@@ -87,17 +87,11 @@
                                         <div class="row mb-3">
                                             <label class="col-sm-2 col-form-label">Código:</label>
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control" name="codigo" value="<?php echo $max_id; ?>">
+                                                <input type="text" class="form-control"  name="codigo" value="<?php echo $max_id; ?>" readonly>
                                             </div>
                                         </div>
 
-                                        <div class="row mb-3">
-                                            <label class="col-sm-2 col-form-label">Código:</label>
-                                            <div class="col-sm-10">
-                                                <input type="text" class="form-control" name="codigo">
-                                            </div>
-                                        </div>
-
+                                       
                                         <div class="row mb-3">
                                             <label class="col-sm-2 col-form-label">Tipo de documento:</label>
                                             <div class="col-sm-10">
