@@ -111,14 +111,38 @@
                                         <div class="row mb-3">
                                             <label class="col-sm-2 col-form-label">Año:</label>
                                             <div class="col-sm-10">
-                                                <input type="number" class="form-control" name="anio" required>
+                                                <input type="date" class="form-control" name="anio" required>
                                             </div>
                                         </div>
 
                                         <div class="row mb-3">
                                             <label class="col-sm-2 col-form-label">Entidad Remitente:</label>
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control" name="entidad_remitente" required>
+                                                
+                                                <select class="form-control select2" name="entidad_remitente">
+                                                    <!-- Agregar opciones dinámicamente desde la base de datos -->
+                                                    <?php
+                                                    // Incluir el archivo de conexión a la base de datos
+                                                    require 'includes/conTest.php';
+
+                                                    // Consulta SQL para obtener los nombres de la tabla "usuarios"
+                                                    $sql4 = "SELECT * FROM dependencias";
+                                                    $result4 = $conn->query($sql4);
+
+                                                    if ($result4->num_rows > 0) {
+                                                        while ($row4 = $result4->fetch_assoc()) {
+                                                            $id_documento_tipo  = $row4["id_dependencia"];
+                                                            $nombre = $row4["nombre"];
+                                                            /* $cargo = $row["cargo"]; */
+                                                            echo "<option value='$id_documento_tipo'>$nombre</option>";
+                                                        }
+                                                    }
+
+                                                    // Cerrar la conexión a la base de datos
+                                                    $conn->close();
+                                                    ?>
+                                                </select>
+
                                             </div>
                                         </div>
 
