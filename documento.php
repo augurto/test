@@ -67,7 +67,7 @@
                                         <div class="row mb-3">
                                             <label class="col-sm-2 col-form-label">Código:</label>
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control" name="codigo" required>
+                                                <input type="hidden" class="form-control" name="codigo">
                                             </div>
                                         </div>
 
