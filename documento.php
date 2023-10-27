@@ -145,6 +145,13 @@
 
                                             </div>
                                         </div>
+                                        <div class="row mb-3">
+                                            <label class="col-sm-2 col-form-label">Dirección:</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" name="direccion" required>
+                                            </div>
+                                        </div>
+
 
                                         <div class="row mb-3">
                                             <label class="col-sm-2 col-form-label">Suscrito:</label>
@@ -170,17 +177,11 @@
                                         <div class="row mb-3">
                                             <label class="col-sm-2 col-form-label">Carpeta Fiscal:</label>
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control" name="carpeta_fiscal" required>
+                                                <input type="text" class="form-control" name="carpeta_fiscal" >
                                             </div>
                                         </div>
 
-                                        <div class="row mb-3">
-                                            <label class="col-sm-2 col-form-label">Dirección:</label>
-                                            <div class="col-sm-10">
-                                                <input type="text" class="form-control" name="direccion" required>
-                                            </div>
-                                        </div>
-
+                                       
                                         <div class="row mb-3">
                                             <label class="col-sm-2 col-form-label">Observaciones:</label>
                                             <div class="col-sm-10">
