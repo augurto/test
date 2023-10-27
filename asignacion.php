@@ -196,7 +196,7 @@
                                             include 'includes/conTest.php';
 
                                             // Consulta SQL para obtener los datos de la tabla nuevaAsignacion
-                                            $sql_asignacion = "SELECT na.id_documento,na.id_courier,na.id_dependencia, na.fecha_asignacion, na.estado_asignacion, nd.codigo FROM nuevaAsignacion na inner join nuevoDocumento nd on na.id_documento=nd.id";
+                                            $sql_asignacion = "SELECT na.id_documento,na.id_courier,na.id_dependencia, na.fecha_asignacion, na.estado_asignacion, nd.codigo, u.nombres as nombreCourier FROM nuevaAsignacion na inner join nuevoDocumento nd on na.id_documento=nd.id inner join users u on u.user_id=na.id_courier";
 
                                             $result_asignacion = $conn->query($sql_asignacion);
 
@@ -204,7 +204,7 @@
                                                 while ($row_asignacion = $result_asignacion->fetch_assoc()) {
                                                     echo "<tr>";
                                                     echo "<td>" . $row_asignacion['codigo'] . "</td>"; // Nombre de campo a reemplazar
-                                                    echo "<td>" . $row_asignacion['id_courier'] . "</td>"; // Nombre de campo a reemplazar
+                                                    echo "<td>" . $row_asignacion['nombreCourier'] . "</td>"; // Nombre de campo a reemplazar
                                                     echo "<td>" . $row_asignacion['id_dependencia'] . "</td>"; // Nombre de campo a reemplazar
                                                     echo "<td>" . $row_asignacion['fecha_asignacion'] . "</td>"; // Nombre de campo a reemplazar
                                                     echo "<td>"; // Columna para el dropdown 
