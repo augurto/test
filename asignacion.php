@@ -108,7 +108,7 @@
                                                     require 'includes/conTest.php';
 
                                                     // Consulta SQL para obtener los estados de la tabla "estadoDocumento"
-                                                    $consulta = "SELECT * FROM users";
+                                                    $consulta = "SELECT * FROM users where user_id > 1";
                                                     $resultado = $conn->query($consulta);
 
                                                     if ($resultado->num_rows > 0) {
