@@ -76,6 +76,7 @@ include 'includes/conexion.php'; // Incluir el archivo de conexión
                                             </div>
                                         </center>
                                         <!-- sample modal content -->
+                                        <form method="POST" action="./content/guardar_proyecto.php">
                                         <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
@@ -86,14 +87,14 @@ include 'includes/conexion.php'; // Incluir el archivo de conexión
                                                     </div>
                                                     <div class="card-body">
                                                         <div class="form-floating mb-3">
-                                                            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                                                            <input type="email" class="form-control" id="floatingInput" name="nombre" placeholder="name@example.com">
                                                             <label for="floatingInput">Nombre del proyecto</label>
                                                         </div>
                                                         <div>
                                                             <label class="form-label">Fecha Inicio - Fecha Fin</label>
                                                             <div class="input-daterange input-group" id="datepicker6" data-date-format="dd M, yyyy" data-date-autoclose="true" data-provide="datepicker" data-date-container='#datepicker6'>
-                                                                <input type="text" class="form-control" name="start" placeholder="Start Date" />
-                                                                <input type="text" class="form-control" name="end" placeholder="End Date" />
+                                                                <input type="text" class="form-control" name="start" placeholder="Fecha Inicio" />
+                                                                <input type="text" class="form-control" name="end" placeholder="Fecha Fin" />
                                                             </div>
                                                             <!-- input group -->
                                                         </div>
@@ -102,16 +103,17 @@ include 'includes/conexion.php'; // Incluir el archivo de conexión
                                                             <p class="text-muted mb-3 font-14">
                                                                 Mete floro
                                                             </p>
-                                                            <textarea id="textarea" class="form-control" maxlength="225" rows="3" placeholder="Desfogate"></textarea>
+                                                            <textarea id="textarea" name="descripcion" class="form-control" maxlength="225" rows="3" placeholder="Desfogate"></textarea>
                                                         </div>
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-light waves-effect" data-bs-dismiss="modal">Cerrar</button>
-                                                        <button type="button" class="btn btn-primary waves-effect waves-light">Crear Proyecto</button>
+                                                        <button type="submit" class="btn btn-primary waves-effect waves-light">Crear Proyecto</button>
                                                     </div>
                                                 </div><!-- /.modal-content -->
                                             </div><!-- /.modal-dialog -->
                                         </div><!-- /.modal -->
+                                        </form>
                                     </div>
 
 
