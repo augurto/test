@@ -68,33 +68,29 @@ include 'includes/conexion.php'; // Incluir el archivo de conexión
                             <div class="card">
                                 <div class="card-body">
                                     <div class="col-sm-6 col-md-4 col-xl-3">
-                                        <div class="my-4 text-center">
-                                            <center>
-                                            <button type="button" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#myModal">Crear nuevo Proyecto</button>
-                                            </center>
-                                        </div>
+                                        <center>
+                                            <div class="my-4 text-center">
 
+                                                <button type="button" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#myModal">Crear nuevo Proyecto</button>
+
+                                            </div>
+                                        </center>
                                         <!-- sample modal content -->
                                         <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title mt-0" id="myModalLabel">Modal Heading
+                                                        <h5 class="modal-title mt-0" id="myModalLabel">Crear nuevo Proyecto
                                                         </h5>
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                     </div>
-                                                    <div class="modal-body">
-                                                        <h5>Overflowing text to show scroll behavior</h5>
-                                                        <p>Cras mattis consectetur purus sit amet fermentum.
-                                                            Cras justo odio, dapibus ac facilisis in,
-                                                            egestas eget quam. Morbi leo risus, porta ac
-                                                            consectetur ac, vestibulum at eros.</p>
-                                                       
+                                                    <div class="form-floating mb-3">
+                                                        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                                                        <label for="floatingInput">Nombre del proyecto</label>
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <button type="button" class="btn btn-light waves-effect" data-bs-dismiss="modal">Close</button>
-                                                        <button type="button" class="btn btn-primary waves-effect waves-light">Save
-                                                            changes</button>
+                                                        <button type="button" class="btn btn-light waves-effect" data-bs-dismiss="modal">Cerrar</button>
+                                                        <button type="button" class="btn btn-primary waves-effect waves-light">Crear Proyecto</button>
                                                     </div>
                                                 </div><!-- /.modal-content -->
                                             </div><!-- /.modal-dialog -->
