@@ -102,7 +102,7 @@ include 'includes/conexion.php'; // Incluir el archivo de conexión
                                                             <p class="text-muted mb-3 font-14">
                                                                 Mete floro
                                                             </p>
-                                                            <textarea id="textarea" class="form-control" maxlength="225" rows="3" placeholder="This textarea has a limit of 225 chars."></textarea>
+                                                            <textarea id="textarea" class="form-control" maxlength="225" rows="3" placeholder="Desfogate"></textarea>
                                                         </div>
                                                     </div>
                                                     <div class="modal-footer">
