@@ -9,7 +9,7 @@ $fecha_real_fin = $_POST['fecha_real_fin'];
 $sql = "INSERT INTO proyecto (nombre, descripcion, fecha_inicio, fecha_estimada_fin, fecha_real_fin) VALUES ('$nombre', '$descripcion', '$fecha_inicio', '$fecha_estimada_fin', '$fecha_real_fin')";
 
 if ($conn->query($sql) === TRUE) {
-    header("Location: ../proyecto.php");
+    header("Location: ../proyectos.php");
     exit(); 
 } else {
     echo "Error al crear el proyecto: " . $conn->error;

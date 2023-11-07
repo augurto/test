@@ -158,6 +158,7 @@ include 'includes/conexion.php'; // Incluir el archivo de conexión
 
                                         while ($row = $result->fetch_assoc()) {
                                             echo '<tr>';
+                                            echo '<td>' . $row['id_proyecto'] . '</td>';
                                             echo '<td><a href="proyecto.php?id=' . $row['id_proyecto'] . '">' . $row['nombre'] . '</a></td>';
                                             echo '<td>' . $row['descripcion'] . '</td>';
                                             echo '<td>' . $row['fecha_inicio'] . '</td>';
