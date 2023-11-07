@@ -84,9 +84,11 @@ include 'includes/conexion.php'; // Incluir el archivo de conexión
                                                         </h5>
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                     </div>
-                                                    <div class="form-floating mb-3">
-                                                        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                                                        <label for="floatingInput">Nombre del proyecto</label>
+                                                    <div class="card-body">
+                                                        <div class="form-floating mb-3">
+                                                            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                                                            <label for="floatingInput">Nombre del proyecto</label>
+                                                        </div>
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-light waves-effect" data-bs-dismiss="modal">Cerrar</button>
