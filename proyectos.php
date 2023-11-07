@@ -89,6 +89,14 @@ include 'includes/conexion.php'; // Incluir el archivo de conexión
                                                             <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
                                                             <label for="floatingInput">Nombre del proyecto</label>
                                                         </div>
+                                                        <div>
+                                                            <label class="form-label">Date Range</label>
+                                                            <div class="input-daterange input-group" id="datepicker6" data-date-format="dd M, yyyy" data-date-autoclose="true" data-provide="datepicker" data-date-container='#datepicker6'>
+                                                                <input type="text" class="form-control" name="start" placeholder="Start Date" />
+                                                                <input type="text" class="form-control" name="end" placeholder="End Date" />
+                                                            </div>
+                                                            <!-- input group -->
+                                                        </div>
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-light waves-effect" data-bs-dismiss="modal">Cerrar</button>
