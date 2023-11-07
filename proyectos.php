@@ -77,42 +77,42 @@ include 'includes/conexion.php'; // Incluir el archivo de conexión
                                         </center>
                                         <!-- sample modal content -->
                                         <form method="POST" action="./content/guardar_proyecto.php">
-                                        <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title mt-0" id="myModalLabel">Crear nuevo Proyecto
-                                                        </h5>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                    </div>
-                                                    <div class="card-body">
-                                                        <div class="form-floating mb-3">
-                                                            <input type="text" class="form-control" id="floatingInput" name="nombre" placeholder="name@example.com">
-                                                            <label for="floatingInput">Nombre del proyecto</label>
+                                            <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title mt-0" id="myModalLabel">Crear nuevo Proyecto
+                                                            </h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
-                                                        <div>
-                                                            <label class="form-label">Fecha Inicio - Fecha Fin</label>
-                                                            <div class="input-daterange input-group" id="datepicker6" data-date-format="yyyy-mm-dd" data-date-autoclose="true" data-provide="datepicker" data-date-container='#datepicker6'>
-                                                                <input type="text" class="form-control" name="start" placeholder="Fecha Inicio" />
-                                                                <input type="text" class="form-control" name="end" placeholder="Fecha Fin" />
+                                                        <div class="card-body">
+                                                            <div class="form-floating mb-3">
+                                                                <input type="text" class="form-control" id="floatingInput" name="nombre" placeholder="name@example.com">
+                                                                <label for="floatingInput">Nombre del proyecto</label>
                                                             </div>
-                                                            <!-- input group -->
+                                                            <div>
+                                                                <label class="form-label">Fecha Inicio - Fecha Fin</label>
+                                                                <div class="input-daterange input-group" id="datepicker6" data-date-format="yyyy-mm-dd" data-date-autoclose="true" data-provide="datepicker" data-date-container='#datepicker6'>
+                                                                    <input type="text" class="form-control" name="start" placeholder="Fecha Inicio" />
+                                                                    <input type="text" class="form-control" name="end" placeholder="Fecha Fin" />
+                                                                </div>
+                                                                <!-- input group -->
+                                                            </div>
+                                                            <div class="mt-3">
+                                                                <label class="mb-1">Descripcion</label>
+                                                                <p class="text-muted mb-3 font-14">
+                                                                    Mete floro
+                                                                </p>
+                                                                <textarea id="textarea" name="descripcion" class="form-control" maxlength="225" rows="3" placeholder="Desfogate"></textarea>
+                                                            </div>
                                                         </div>
-                                                        <div class="mt-3">
-                                                            <label class="mb-1">Descripcion</label>
-                                                            <p class="text-muted mb-3 font-14">
-                                                                Mete floro
-                                                            </p>
-                                                            <textarea id="textarea" name="descripcion" class="form-control" maxlength="225" rows="3" placeholder="Desfogate"></textarea>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-light waves-effect" data-bs-dismiss="modal">Cerrar</button>
+                                                            <button type="submit" class="btn btn-primary waves-effect waves-light">Crear Proyecto</button>
                                                         </div>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-light waves-effect" data-bs-dismiss="modal">Cerrar</button>
-                                                        <button type="submit" class="btn btn-primary waves-effect waves-light">Crear Proyecto</button>
-                                                    </div>
-                                                </div><!-- /.modal-content -->
-                                            </div><!-- /.modal-dialog -->
-                                        </div><!-- /.modal -->
+                                                    </div><!-- /.modal-content -->
+                                                </div><!-- /.modal-dialog -->
+                                            </div><!-- /.modal -->
                                         </form>
                                     </div>
 
@@ -125,6 +125,63 @@ include 'includes/conexion.php'; // Incluir el archivo de conexión
                         <!-- end col -->
                     </div>
                     <!-- end row -->
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-body">
+
+                                    <h4 class="card-title">Proyectos Actuales</h4>
+
+
+                                    <?php
+                                    // Incluir el archivo de conexión
+                                    include './content/conexion.php';
+
+                                    // Consulta SQL para seleccionar todos los proyectos de la tabla 'proyecto'
+                                    $sql = "SELECT * FROM proyecto";
+
+                                    $result = $conn->query($sql);
+
+                                    if ($result->num_rows > 0) {
+                                        echo '<table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">';
+                                        echo '<thead>';
+                                        echo '<tr>';
+                                        echo '<th>ID Proyecto</th>';
+                                        echo '<th>Nombre del Proyecto</th>';
+                                        echo '<th>Descripción</th>';
+                                        echo '<th>Fecha de Inicio</th>';
+                                        echo '<th>Fecha Estimada de Fin</th>';
+                                        echo '<th>Fecha Real de Fin</th>';
+                                        echo '</tr>';
+                                        echo '</thead>';
+                                        echo '<tbody>';
+
+                                        while ($row = $result->fetch_assoc()) {
+                                            echo '<tr>';
+                                            echo '<td>' . $row['id_proyecto'] . '</td>';
+                                            echo '<td>' . $row['nombre'] . '</td>';
+                                            echo '<td>' . $row['descripcion'] . '</td>';
+                                            echo '<td>' . $row['fecha_inicio'] . '</td>';
+                                            echo '<td>' . $row['fecha_estimada_fin'] . '</td>';
+                                            echo '<td>' . $row['fecha_real_fin'] . '</td>';
+                                            echo '</tr>';
+                                        }
+
+                                        echo '</tbody>';
+                                        echo '</table>';
+                                    } else {
+                                        echo 'No se encontraron proyectos.';
+                                    }
+
+                                    // Cerrar la conexión a la base de datos
+                                    $conn->close();
+                                    ?>
+
+                                </div>
+                            </div>
+                        </div> <!-- end col -->
+                    </div> <!-- end row -->
+
 
 
                     <!-- FIN DATOS -->
