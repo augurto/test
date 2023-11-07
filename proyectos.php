@@ -69,8 +69,9 @@ include 'includes/conexion.php'; // Incluir el archivo de conexión
                                 <div class="card-body">
                                     <div class="col-sm-6 col-md-4 col-xl-3">
                                         <div class="my-4 text-center">
-                                            <p class="text-muted">Standard modal</p>
-                                            <button type="button" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#myModal">Standard modal</button>
+                                            <center>
+                                            <button type="button" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#myModal">Crear nuevo Proyecto</button>
+                                            </center>
                                         </div>
 
                                         <!-- sample modal content -->
