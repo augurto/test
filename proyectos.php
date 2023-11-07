@@ -90,12 +90,19 @@ include 'includes/conexion.php'; // Incluir el archivo de conexión
                                                             <label for="floatingInput">Nombre del proyecto</label>
                                                         </div>
                                                         <div>
-                                                            <label class="form-label">Date Range</label>
+                                                            <label class="form-label">Fecha Inicio - Fecha Fin</label>
                                                             <div class="input-daterange input-group" id="datepicker6" data-date-format="dd M, yyyy" data-date-autoclose="true" data-provide="datepicker" data-date-container='#datepicker6'>
                                                                 <input type="text" class="form-control" name="start" placeholder="Start Date" />
                                                                 <input type="text" class="form-control" name="end" placeholder="End Date" />
                                                             </div>
                                                             <!-- input group -->
+                                                        </div>
+                                                        <div class="mt-3">
+                                                            <label class="mb-1">Descripcion</label>
+                                                            <p class="text-muted mb-3 font-14">
+                                                                Mete floro
+                                                            </p>
+                                                            <textarea id="textarea" class="form-control" maxlength="225" rows="3" placeholder="This textarea has a limit of 225 chars."></textarea>
                                                         </div>
                                                     </div>
                                                     <div class="modal-footer">
