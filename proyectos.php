@@ -87,12 +87,12 @@ include 'includes/conexion.php'; // Incluir el archivo de conexión
                                                     </div>
                                                     <div class="card-body">
                                                         <div class="form-floating mb-3">
-                                                            <input type="email" class="form-control" id="floatingInput" name="nombre" placeholder="name@example.com">
+                                                            <input type="text" class="form-control" id="floatingInput" name="nombre" placeholder="name@example.com">
                                                             <label for="floatingInput">Nombre del proyecto</label>
                                                         </div>
                                                         <div>
                                                             <label class="form-label">Fecha Inicio - Fecha Fin</label>
-                                                            <div class="input-daterange input-group" id="datepicker6" data-date-format="dd M, yyyy" data-date-autoclose="true" data-provide="datepicker" data-date-container='#datepicker6'>
+                                                            <div class="input-daterange input-group" id="datepicker6" data-date-format="yyyy-mm-dd" data-date-autoclose="true" data-provide="datepicker" data-date-container='#datepicker6'>
                                                                 <input type="text" class="form-control" name="start" placeholder="Fecha Inicio" />
                                                                 <input type="text" class="form-control" name="end" placeholder="Fecha Fin" />
                                                             </div>
