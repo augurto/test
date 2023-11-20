@@ -1,5 +1,5 @@
 <?php
-include 'conexion.php'; // Incluir el archivo de conexión
+include './conTest.php'; // Incluir el archivo de conexión
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Obtener los valores del formulario
@@ -8,7 +8,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     // Realizar la consulta a la base de datos
     $query = "SELECT * FROM user WHERE documento = '$dni' OR userName = '$dni' AND pass_user = '$password'";
-    $result = mysqli_query($con, $query);
+    $result = mysqli_query($conn, $query);
     
     // Verificar si se encontraron resultados
     if (mysqli_num_rows($result) > 0) {
@@ -47,5 +47,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 // Cerrar la conexión a la base de datos
-mysqli_close($con);
+mysqli_close($conn);
 ?>
