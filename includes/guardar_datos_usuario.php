@@ -33,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         
         // Redireccionar según el tipo de usuario
         if ($tipoUsuario == 1) {
-            header("Location: ../index2.php");
+            header("Location: ../documento.php");
             exit();
         } elseif ($tipoUsuario == 2) {
             header("Location: ../inicio.php");
