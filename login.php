@@ -4,7 +4,7 @@
 <head>
 
     <meta charset="utf-8" />
-    <title>Login GEO</title>
+    <title>Login </title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="Themesdesign" name="author" />
@@ -30,14 +30,7 @@
                 <div class="col-md-8 col-lg-6 col-xl-5">
                     <div class="card">
                         <div class="card-body">
-                            <div class="text-center mt-4">
-                                <div class="mb-3">
-                                    <a href="index.html" class="">
-                                        <img src="assets/images/adNuevo.png" alt="" height="22" class="auth-logo logo-dark mx-auto" >
-                                        <img src="assets/images/adNuevo.png" alt="" height="22" class="auth-logo logo-light mx-auto" >
-                                    </a>
-                                </div>
-                            </div>
+                            
                             <div class="p-3">
                                 <h4 class="font-size-18 text-muted mt-2 text-center">¡Bienvenido!</h4>
                                 <p class="text-muted text-center mb-4">Iniciar Sesion</p>
@@ -89,7 +82,7 @@
                     <div class="mt-5 text-center">
                         <!-- <p>No tienes una cuenta ?<a href="auth-register.html" class="fw-bold text-primary"> Registrate ahora                              Now </a></p>
  -->                        <p>©
-                            <script>document.write(new Date().getFullYear())</script> Adfusion <i
+                            <script>document.write(new Date().getFullYear())</script> <i
                                 class="mdi mdi-heart text-danger"></i> 
                         </p>
                     </div>
