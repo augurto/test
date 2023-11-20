@@ -1,6 +1,6 @@
 <?php
 
-include 'includes/conexion.php'; // Incluir el archivo de conexión
+include 'includes/conTest.php'; // Incluir el archivo de conexión
 
 
 ?>
