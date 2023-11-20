@@ -11,7 +11,7 @@ include 'includes/conTest.php'; // Incluir el archivo de conexión
 <head>
 
     <meta charset="utf-8" />
-    <title>Geo <?php echo "<3"; ?></title>
+    <title> <?php echo "<3"; ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="Themesdesign" name="author" />
@@ -70,7 +70,7 @@ include 'includes/conTest.php'; // Incluir el archivo de conexión
 
                                     <h4 class="card-title">Registrar Usuario</h4>
 
-                                    <form id="documentoForm" action="generarPDF.php" method="POST" target="_blank">
+                                    <form id="documentoForm" action="includes/crearUsuario.php" method="POST" target="_blank">
 
                                         <div class="row mb-3">
                                             <label class="col-sm-2 col-form-label">Nombre de usuario </label>
@@ -83,21 +83,24 @@ include 'includes/conTest.php'; // Incluir el archivo de conexión
                                             <label for="example-text-input" class="col-sm-2 col-form-label">email</label>
                                             <div class="col-sm-10">
 
-                                                <input type="email" class="form-control" name="Requerimiento">
+                                                <input type="email" class="form-control" name="email">
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <label for="example-text-input" class="col-sm-2 col-form-label">Documento</label>
+                                            <div class="col-sm-10">
+
+                                                <input type="text" class="form-control" name="documento">
                                             </div>
                                         </div>
                                         <div class="row mb-3">
                                             <label for="example-text-input" class="col-sm-2 col-form-label">Password</label>
                                             <div class="col-sm-10">
 
-                                                <input type="password" class="form-control" name="Requerimiento">
+                                                <input type="password" class="form-control" name="pass">
                                             </div>
                                         </div>
                                         <!-- end row -->
-
-                                        
-
-
 
                                         <div class="row mb-3">
                                             <div class="col-sm-10 offset-sm-2">
