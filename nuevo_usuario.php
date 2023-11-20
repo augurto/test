@@ -86,6 +86,13 @@ include 'includes/conTest.php'; // Incluir el archivo de conexión
                                                 <input type="email" class="form-control" name="Requerimiento">
                                             </div>
                                         </div>
+                                        <div class="row mb-3">
+                                            <label for="example-text-input" class="col-sm-2 col-form-label">Password</label>
+                                            <div class="col-sm-10">
+
+                                                <input type="password" class="form-control" name="Requerimiento">
+                                            </div>
+                                        </div>
                                         <!-- end row -->
 
                                         
