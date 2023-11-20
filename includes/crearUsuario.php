@@ -3,7 +3,7 @@
 
 // Verificar si se ha enviado el formulario
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    
+
     // Conectar a la base de datos (asegúrate de cambiar estos valores según tu configuración)
     $servername = "localhost";
     $username = "u291982824_siscun";
@@ -31,6 +31,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Ejecutar la consulta
     if ($conn->query($sql) === TRUE) {
         echo "Usuario creado con éxito";
+        // Redirigir a la página nuevo_usuario.php
+        header("Location: ../nuevo_usuario.php");
+        exit(); // Asegurar que el script se detenga después de la redirección
     } else {
         echo "Error al crear el usuario: " . $conn->error;
     }
@@ -40,4 +43,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 } else {
     echo "No se recibieron datos del formulario";
 }
-?>
