@@ -21,7 +21,7 @@
                     </a>
                 </li>
 
-
+                <li>
                 <?php 
                 if ($tipoUsuario == 1) {
                         echo '<a href="nuevo_usuario.php" class="waves-effect">
@@ -32,6 +32,7 @@
 
                     ?>
 
+                </li>
             </ul>
             <!-- end ul -->
         </div>
