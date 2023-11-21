@@ -280,7 +280,7 @@
                                                 <th>Carpeta Fiscal</th>
                                                 <th>Dirección</th>
                                                 <th>Año</th>
-                                                <th>Observaciones.</th>
+                                                <th>Observaciones</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -328,7 +328,6 @@
                                                     echo "<td>" . $row['carpeta_fiscal'] . "</td>";
                                                     echo "<td>" . $row['direccion'] . "</td>";
                                                     echo "<td>" . $anio_creacion . "</td>";
-                                                    echo "<td>" . $row['anio'] . "</td>";
                                                     echo "<td>" . $row['observaciones'] . "</td>";
                                                     echo "</tr>";
                                                 }
