@@ -94,7 +94,7 @@ include 'includes/conTest.php'; // Incluir el archivo de conexión
                                             </div>
                                         </div>
                                         <div class="row mb-3">
-                                            <label class="col-sm-2 col-form-label">Entidad Remitente:</label>
+                                            <label class="col-sm-2 col-form-label">Entidad </label>
                                             <div class="col-sm-10">
 
                                                 <select class="form-control select2" name="entidad_remitente">
