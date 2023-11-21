@@ -279,7 +279,7 @@
                                                 <th>Carpeta Fiscal</th>
                                                 <th>Dirección</th>
                                                 <th>Fecha de Creación</th>
-                                                <th>Observaciones</th>
+                                                <th>Observaciones.</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -290,7 +290,7 @@
                                             // Consulta SQL para obtener los datos de la tabla nuevoDocumento
                                             $sql = "SELECT nd.codigo, dt.nombre,nd.estado,nd.numero, nd.anio,nd.entidad_remitente,nd.suscrito, nd.destinatario_o_cargo, nd.entidad,
                                             nd.carpeta_fiscal, nd.direccion,nd.fecha_creacion,nd.observaciones 
-                                             FROM nuevoDocumento nd inner join documentos_tipo dt on dt.id_documento_tipo=nd.tipo_documento order by id desc";
+                                             FROM nuevoDocumento nd inner join documentos_tipo dt on dt.id_documento_tipo=nd.tipo_documento order by id asc";
 
                                             $result = $conn->query($sql);
 
