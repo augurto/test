@@ -291,12 +291,13 @@
                                             // Consulta SQL para obtener los datos de la tabla nuevoDocumento
                                             $sql = "SELECT nd.codigo, dt.nombre,nd.estado,nd.numero, nd.anio,nd.entidad_remitente,nd.suscrito, nd.destinatario_o_cargo, nd.entidad,
                                             nd.carpeta_fiscal, nd.direccion,nd.fecha_creacion,nd.observaciones 
-                                             FROM nuevoDocumento nd inner join documentos_tipo dt on dt.id_documento_tipo=nd.tipo_documento order by id asc";
+                                             FROM nuevoDocumento nd inner join documentos_tipo dt on dt.id_documento_tipo=nd.tipo_documento order by id desc";
 
                                             $result = $conn->query($sql);
 
                                             if ($result->num_rows > 0) {
                                                 $id = 1; 
+                                                $anio_creacion = date('Y', strtotime($row['fecha_creacion']));
                                                 while ($row = $result->fetch_assoc()) {
                                                     echo "<tr>";
                                                      echo "<td>" . $id . "</td>";
@@ -326,8 +327,7 @@
                                                     echo "<td>" . $row['entidad'] . "</td>";
                                                     echo "<td>" . $row['carpeta_fiscal'] . "</td>";
                                                     echo "<td>" . $row['direccion'] . "</td>";
-                                                    $fecha_anio = substr($row['fecha_creacion'], 0, 10);
-                                                    echo "<td>" . $fecha_anio . "</td>";
+                                                    echo "<td>" . $anio_creacion . "</td>";
                                                     echo "<td>" . $row['anio'] . "</td>";
                                                     echo "<td>" . $row['observaciones'] . "</td>";
                                                     echo "</tr>";
