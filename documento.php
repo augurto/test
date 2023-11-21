@@ -267,18 +267,19 @@
                                     <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                         <thead>
                                             <tr>
+                                                <th> </th>
                                                 <th>Código</th>
                                                 <th>Tipo de Documento</th>
                                                 <th>Estado</th>
                                                 <th>Número</th>
-                                                <th>Año</th>
+                                                <th>Fecha</th>
                                                 <th>Entidad Remitente</th>
                                                 <th>Suscrito</th>
                                                 <th>Destinatario o Cargo</th>
                                                 <th>Entidad</th>
                                                 <th>Carpeta Fiscal</th>
                                                 <th>Dirección</th>
-                                                <th>Fecha de Creación</th>
+                                                <th>Año</th>
                                                 <th>Observaciones.</th>
                                             </tr>
                                         </thead>
@@ -295,8 +296,10 @@
                                             $result = $conn->query($sql);
 
                                             if ($result->num_rows > 0) {
+                                                $id = 1; 
                                                 while ($row = $result->fetch_assoc()) {
                                                     echo "<tr>";
+                                                     echo "<td>" . $id . "</td>";
                                                     echo "<td>" . $row['codigo'] . "</td>";
                                                     echo "<td>" . $row['nombre'] . "</td>";
 
@@ -316,14 +319,16 @@
                                                     }
                                                     echo "</td>";
                                                     echo "<td>" . $row['numero'] . "</td>";
-                                                    echo "<td>" . $row['anio'] . "</td>";
+                                                    echo "<td>" . $row['fecha_creacion'] . "</td>";
                                                     echo "<td>" . $row['entidad_remitente'] . "</td>";
                                                     echo "<td>" . $row['suscrito'] . "</td>";
                                                     echo "<td>" . $row['destinatario_o_cargo'] . "</td>";
                                                     echo "<td>" . $row['entidad'] . "</td>";
                                                     echo "<td>" . $row['carpeta_fiscal'] . "</td>";
                                                     echo "<td>" . $row['direccion'] . "</td>";
-                                                    echo "<td>" . $row['fecha_creacion'] . "</td>";
+                                                    $fecha_anio = substr($row['fecha_creacion'], 0, 10);
+                                                    echo "<td>" . $fecha_anio . "</td>";
+                                                    echo "<td>" . $row['anio'] . "</td>";
                                                     echo "<td>" . $row['observaciones'] . "</td>";
                                                     echo "</tr>";
                                                 }
