@@ -136,7 +136,7 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                             </div>
                                         </div>
                                         <div class="row mb-3">
-                                            <label class="col-sm-2 col-form-label">Entidad </label>
+                                            <label class="col-sm-2 col-form-label">Tipo Usuario </label>
                                             <div class="col-sm-10">
 
                                                 <select class="form-control select2" name="tipo_user">
