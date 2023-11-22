@@ -1,4 +1,6 @@
 <!-- ========== Left Sidebar Start ========== -->
+<?php $tipoUsuario =$_SESSION['tipoUsuario'];  ?>
+
 <div class="vertical-menu">
 
     <div data-simplebar class="h-100">
