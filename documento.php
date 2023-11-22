@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'includes/conexion.php'; // Incluir el archivo de conexión
+include 'includes/conTest.php'; // Incluir el archivo de conexión
 
 if (!isset($_SESSION['usuario'])) {
     // El usuario no ha iniciado sesión, redireccionar a la página de inicio de sesión o mostrar un mensaje de error
@@ -12,9 +12,9 @@ if (!isset($_SESSION['usuario'])) {
 $usuario = $_SESSION['usuario'];
 $dni = $_SESSION['dni'];
 $tipoUsuario = $_SESSION['tipoUsuario'];
-$empresaUser =$_SESSION['empresaUser'] ;
-
-
+$empresaUser = $_SESSION['empresaUser'];
+$userName = $_SESSION['userName'];
+$idUser = $_SESSION['idUser'];
 
 ?>
 <!doctype html>
@@ -95,7 +95,7 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                         $max_id = 0; // Valor predeterminado si no se encuentra ningún registro
                                         if ($result_max_id->num_rows > 0) {
                                             $row_max_id = $result_max_id->fetch_assoc();
-                                            $max_id = '00'.$row_max_id['max_id'] + 1;
+                                            $max_id = '00' . $row_max_id['max_id'] + 1;
                                         }
 
                                         // Cerrar la conexión a la base de datos
@@ -106,11 +106,11 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                         <div class="row mb-3">
                                             <label class="col-sm-2 col-form-label">Código:</label>
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control"  name="codigo" value="<?php echo $max_id; ?>" readonly>
+                                                <input type="text" class="form-control" name="codigo" value="<?php echo $max_id; ?>" readonly>
                                             </div>
                                         </div>
 
-                                       
+
                                         <div class="row mb-3">
                                             <label class="col-sm-2 col-form-label">Tipo de documento:</label>
                                             <div class="col-sm-10">
@@ -139,6 +139,10 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                                 </select>
                                             </div>
                                         </div>
+
+
+                                        <input type="text" class="form-control" name="user" value="<?php echo $idUser; ?>">
+
 
                                         <div class="row mb-3">
                                             <label class="col-sm-2 col-form-label">Número:</label>
@@ -315,11 +319,11 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                             $result = $conn->query($sql);
 
                                             if ($result->num_rows > 0) {
-                                                $id = 1; 
+                                                $id = 1;
                                                 $anio_creacion = date('Y', strtotime($row['fecha_creacion']));
                                                 while ($row = $result->fetch_assoc()) {
                                                     echo "<tr>";
-                                                     echo "<td>" . $id . "</td>";
+                                                    echo "<td>" . $id . "</td>";
                                                     echo "<td>" . $row['codigo'] . "</td>";
                                                     echo "<td>" . $row['nombre'] . "</td>";
 

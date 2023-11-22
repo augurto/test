@@ -14,6 +14,7 @@ $carpeta_fiscal = $_POST['carpeta_fiscal'];
 $direccion = $_POST['direccion'];
 $observaciones = $_POST['observaciones'];
 $estado = $_POST['estado'];
+$user = $_POST['user'];
 
 
 // Establecer la zona horaria a Perú
@@ -23,7 +24,7 @@ date_default_timezone_set('America/Lima');
 $fecha_creacion = date('Y-m-d H:i:s');
 
 // Consulta SQL para insertar los datos en la tabla nuevoDocumento sin preparar
-$sql = "INSERT INTO nuevoDocumento (codigo, tipo_documento, numero, anio, entidad_remitente, suscrito, destinatario_o_cargo, entidad, carpeta_fiscal, direccion, observaciones, estado, fecha_creacion) VALUES ('$codigo', '$tipo_documento', $numero, $anio, '$entidad_remitente', '$suscrito', '$destinatario_o_cargo', '$entidad', '$carpeta_fiscal', '$direccion', '$observaciones', '$estado', '$fecha_creacion')";
+$sql = "INSERT INTO nuevoDocumento (codigo, tipo_documento, numero, anio, entidad_remitente, suscrito, destinatario_o_cargo, entidad, carpeta_fiscal, direccion, observaciones, estado, fecha_creacion,id_user) VALUES ('$codigo', '$tipo_documento', $numero, $anio, '$entidad_remitente', '$suscrito', '$destinatario_o_cargo', '$entidad', '$carpeta_fiscal', '$direccion', '$observaciones', '$estado', '$fecha_creacion', '$user')";
 
 if ($conn->query($sql) === TRUE) {
     // Registro de un mensaje de éxito en el registro del servidor
