@@ -154,7 +154,7 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                                             $id_tipo_user  = $row5["id_tipo_user"];
                                                             $valor_tipo_user = $row5["valor_tipo_user"];
                                                             /* $cargo = $row["cargo"]; */
-                                                            echo "<option value='$id_documento_tipo'>$valor_tipo_user</option>";
+                                                            echo "<option value='$id_tipo_user'>$valor_tipo_user</option>";
                                                         }
                                                     }
 
