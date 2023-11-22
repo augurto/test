@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     // Preparar la consulta SQL para insertar los datos en la tabla de usuarios (ajusta el nombre de la tabla según tu base de datos)
     $sql = "INSERT INTO user (documento, nombre_user,userName,tipo_user,email_user, pass_user, empresaUser, sede) 
-    VALUES ('$documento','$nombreUsuario','$nombreUsuario','1', '$email', '$password','1','$entidad')";
+    VALUES ('$documento','$nombreUsuario','$nombreUsuario','$tipo_user', '$email', '$password','1','$entidad')";
 
     // Ejecutar la consulta
     if ($conn->query($sql) === TRUE) {
