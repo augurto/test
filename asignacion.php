@@ -148,21 +148,21 @@ $idUser = $_SESSION['idUser'];
                                             </div>
                                         </div>
                                         <div class="row mb-3">
-                                            <label class="col-sm-2 col-form-label">Seleccionar Dependencia:</label>
+                                            <label class="col-sm-2 col-form-label">Usuario a Asignar:</label>
                                             <div class="col-sm-10">
-                                                <select class="form-control select2" name="dependencia">
+                                                <select class="form-control select2" name="user">
                                                     <?php
                                                     // Incluir el archivo de conexión a la base de datos
                                                     require 'includes/conTest.php';
 
-                                                    $consulta2 = "SELECT * FROM dependencias";
+                                                    $consulta2 = "SELECT * FROM user";
                                                     $resultado2 = $conn->query($consulta2);
 
                                                     if ($resultado2->num_rows > 0) {
                                                         while ($fila2 = $resultado2->fetch_assoc()) {
-                                                            $id_dependencia = $fila2["id_dependencia"];
-                                                            $nombre = $fila2["nombre"];
-                                                            $sigla = $fila2["sigla"];
+                                                            $id_dependencia = $fila2["id_user"];
+                                                            $nombre = $fila2["nombre_user"];
+                                                            $sigla = $fila2["documento"];
                                                             echo "<option value='$id_dependencia'>$nombre / $sigla </option>";
                                                         }
                                                     }
