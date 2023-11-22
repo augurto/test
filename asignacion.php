@@ -203,12 +203,13 @@ $idUser = $_SESSION['idUser'];
                                     <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                         <thead>
                                             <tr>
+                                                <th>ID</th>
                                                 <th>Código de Documento</th>
                                                 <th>Courier</th>
                                                 <th>Dependencia</th>
                                                 <th>Usuario Asig.</th>
                                                 <th>Fecha de Asignación</th>
-                                                <th>Acción</th> <!-- Nueva columna para el dropdown -->
+                                                <th>Acción</th> 
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -222,8 +223,11 @@ $idUser = $_SESSION['idUser'];
                                             $result_asignacion = $conn->query($sql_asignacion);
 
                                             if ($result_asignacion->num_rows > 0) {
+                                                $id = 1;
                                                 while ($row_asignacion = $result_asignacion->fetch_assoc()) {
+
                                                     echo "<tr>";
+                                                    echo "<td>" . $id . "</td>";
                                                     echo "<td>" . $row_asignacion['codigo'] . "</td>"; 
                                                     echo "<td>" . $row_asignacion['nombreCourier'] . "</td>"; 
                                                     echo "<td>" . $row_asignacion['id_dependencia'] . "</td>"; 
@@ -262,6 +266,7 @@ $idUser = $_SESSION['idUser'];
                                             <?php
                                                     echo "</td>";
                                                     echo "</tr>";
+                                                    $id++;
                                                 }
                                             } else {
                                                 echo "No se encontraron registros.";

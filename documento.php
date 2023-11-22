@@ -353,6 +353,7 @@ $idUser = $_SESSION['idUser'];
                                                     echo "<td>" . $anio_creacion . "</td>";
                                                     echo "<td>" . $row['observaciones'] . "</td>";
                                                     echo "</tr>";
+                                                    $id++;
                                                 }
                                             } else {
                                                 echo "No se encontraron registros.";
