@@ -32,7 +32,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         header("Location: ../nuevo_usuario.php");
         exit(); // Asegurar que el script se detenga después de la redirección
     } else {
-        echo "Error al crear el usuario: " . $conn->error;
+        header("Location: ../nuevo_usuario.php?error=1");
+        exit(); // Asegurar que el script se detenga después de la redirección
     }
 
     // Cerrar la conexión
