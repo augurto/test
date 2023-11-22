@@ -4,7 +4,7 @@ include 'conTest.php'; // Incluye el archivo con la conexión a la base de datos
 // Recopila los datos del formulario
 $documento = $_POST['documento'];
 $courier = $_POST['courier'];
-$dependencia = $_POST['dependencia'];
+/* $dependencia = $_POST['dependencia']; */
 $usuario = $_POST['user'];
 
 // Establecer la zona horaria a Perú
@@ -14,8 +14,8 @@ date_default_timezone_set('America/Lima');
 $fecha_asignacion = date('Y-m-d H:i:s');
 
 // Consulta SQL para insertar los datos en la tabla nuevaAsignacion con la fecha y hora actual
-$sql = "INSERT INTO nuevaAsignacion (id_documento, id_courier, id_dependencia, fecha_asignacion, id_user) 
-        VALUES ('$documento', '$courier', '$dependencia', '$fecha_asignacion', '$usuario')";
+$sql = "INSERT INTO nuevaAsignacion (id_documento, id_courier, fecha_asignacion, id_user) 
+        VALUES ('$documento', '$courier', '$fecha_asignacion', '$usuario')";
 
 // Ejecutar la consulta SQL
 if ($conn->query($sql) === TRUE) {
