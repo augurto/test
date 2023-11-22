@@ -141,7 +141,7 @@ $idUser = $_SESSION['idUser'];
                                         </div>
 
 
-                                        <input type="text" class="form-control" name="user" value="<?php echo $idUser; ?>">
+                                        <input type="hidden" class="form-control" name="user" value="<?php echo $idUser; ?>">
 
 
                                         <div class="row mb-3">
