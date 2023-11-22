@@ -82,7 +82,7 @@ $empresaUser =$_SESSION['empresaUser'] ;
 
                                     <h4 class="card-title">Registrar Usuario</h4>
 
-                                    <form id="documentoForm" action="includes/crearUsuario.php" method="POST" target="_blank">
+                                    <form id="documentoForm" action="includes/crearUsuario.php" method="POST" >
 
                                         <div class="row mb-3">
                                             <label class="col-sm-2 col-form-label">Nombre de usuario </label>
