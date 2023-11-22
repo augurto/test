@@ -109,7 +109,7 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                             <label class="col-sm-2 col-form-label">Entidad </label>
                                             <div class="col-sm-10">
 
-                                                <select class="form-control select2" name="entidad_remitente">
+                                                <select class="form-control select2" name="entidad">
                                                     <!-- Agregar opciones dinámicamente desde la base de datos -->
                                                     <?php
                                                     // Incluir el archivo de conexión a la base de datos

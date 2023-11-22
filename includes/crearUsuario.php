@@ -1,10 +1,6 @@
 <?php
-// includes/crearUsuario.php
-
-// Verificar si se ha enviado el formulario
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    // Conectar a la base de datos (asegúrate de cambiar estos valores según tu configuración)
     $servername = "localhost";
     $username = "u291982824_siscun";
     $password = "Siscun*20";
@@ -22,11 +18,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nombreUsuario = $_POST['nombres'];
     $documento = $_POST['documento'];
     $email = $_POST['email'];
-    $password = $_POST['pass']; // Ten en cuenta que estás usando el mismo campo 'Requerimiento' para la contraseña, es posible que quieras cambiar esto.
+    $password = $_POST['pass']; 
+    $entidad = $_POST['entidad']; 
 
     // Preparar la consulta SQL para insertar los datos en la tabla de usuarios (ajusta el nombre de la tabla según tu base de datos)
     $sql = "INSERT INTO user (documento, nombre_user,userName,tipo_user,email_user, pass_user, empresaUser, sede) 
-    VALUES ('$documento','$nombreUsuario','$nombreUsuario','1', '$email', '$password','1','0')";
+    VALUES ('$documento','$nombreUsuario','$nombreUsuario','1', '$email', '$password','1','$entidad')";
 
     // Ejecutar la consulta
     if ($conn->query($sql) === TRUE) {
