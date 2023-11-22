@@ -1,3 +1,22 @@
+<?php
+session_start();
+include 'includes/conTest.php'; // Incluir el archivo de conexión
+
+if (!isset($_SESSION['usuario'])) {
+    // El usuario no ha iniciado sesión, redireccionar a la página de inicio de sesión o mostrar un mensaje de error
+    header("Location: login.php");
+    exit();
+}
+
+// El usuario ha iniciado sesión, puedes acceder a los datos de sesión
+$usuario = $_SESSION['usuario'];
+$dni = $_SESSION['dni'];
+$tipoUsuario = $_SESSION['tipoUsuario'];
+$empresaUser = $_SESSION['empresaUser'];
+$userName = $_SESSION['userName'];
+$idUser = $_SESSION['idUser'];
+
+?>
 <!doctype html>
 <html lang="es">
 
@@ -186,6 +205,7 @@
                                                 <th>Código de Documento</th>
                                                 <th>Courier</th>
                                                 <th>Dependencia</th>
+                                                <th>Usuario Asig.</th>
                                                 <th>Fecha de Asignación</th>
                                                 <th>Acción</th> <!-- Nueva columna para el dropdown -->
                                             </tr>
@@ -203,10 +223,11 @@
                                             if ($result_asignacion->num_rows > 0) {
                                                 while ($row_asignacion = $result_asignacion->fetch_assoc()) {
                                                     echo "<tr>";
-                                                    echo "<td>" . $row_asignacion['codigo'] . "</td>"; // Nombre de campo a reemplazar
-                                                    echo "<td>" . $row_asignacion['nombreCourier'] . "</td>"; // Nombre de campo a reemplazar
-                                                    echo "<td>" . $row_asignacion['id_dependencia'] . "</td>"; // Nombre de campo a reemplazar
-                                                    echo "<td>" . $row_asignacion['fecha_asignacion'] . "</td>"; // Nombre de campo a reemplazar
+                                                    echo "<td>" . $row_asignacion['codigo'] . "</td>"; 
+                                                    echo "<td>" . $row_asignacion['nombreCourier'] . "</td>"; 
+                                                    echo "<td>" . $row_asignacion['id_dependencia'] . "</td>"; 
+                                                    echo "<td>" . $row_asignacion['id_user'] . "</td>"; 
+                                                    echo "<td>" . $row_asignacion['fecha_asignacion'] . "</td>"; 
                                                     echo "<td>"; // Columna para el dropdown 
                                             ?>
                                                     <!-- Dropdown -->
