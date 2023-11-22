@@ -1,3 +1,22 @@
+<?php
+session_start();
+include 'includes/conexion.php'; // Incluir el archivo de conexión
+
+if (!isset($_SESSION['usuario'])) {
+    // El usuario no ha iniciado sesión, redireccionar a la página de inicio de sesión o mostrar un mensaje de error
+    header("Location: login.php");
+    exit();
+}
+
+// El usuario ha iniciado sesión, puedes acceder a los datos de sesión
+$usuario = $_SESSION['usuario'];
+$dni = $_SESSION['dni'];
+$tipoUsuario = $_SESSION['tipoUsuario'];
+$empresaUser =$_SESSION['empresaUser'] ;
+
+
+
+?>
 <!-- ========== Left Sidebar Start ========== -->
 <?php $tipoUsuario =$_SESSION['tipoUsuario'];  ?>
 
