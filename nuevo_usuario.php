@@ -136,6 +136,36 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                             </div>
                                         </div>
                                         <div class="row mb-3">
+                                            <label class="col-sm-2 col-form-label">Entidad </label>
+                                            <div class="col-sm-10">
+
+                                                <select class="form-control select2" name="tipo_user">
+                                                    <!-- Agregar opciones dinámicamente desde la base de datos -->
+                                                    <?php
+                                                    // Incluir el archivo de conexión a la base de datos
+                                                    require 'includes/conTest.php';
+
+                                                    // Consulta SQL para obtener los nombres de la tabla "usuarios"
+                                                    $sql5 = "SELECT * FROM tipo_usuario";
+                                                    $result5 = $conn->query($sql5);
+
+                                                    if ($result5->num_rows > 0) {
+                                                        while ($row5 = $result5->fetch_assoc()) {
+                                                            $id_tipo_user  = $row5["id_tipo_user"];
+                                                            $valor_tipo_user = $row5["valor_tipo_user"];
+                                                            /* $cargo = $row["cargo"]; */
+                                                            echo "<option value='$id_documento_tipo'>$valor_tipo_user</option>";
+                                                        }
+                                                    }
+
+                                                    // Cerrar la conexión a la base de datos
+                                                    $conn->close();
+                                                    ?>
+                                                </select>
+
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
                                             <label for="example-text-input" class="col-sm-2 col-form-label">Password</label>
                                             <div class="col-sm-10">
 

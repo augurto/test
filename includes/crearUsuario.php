@@ -20,7 +20,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'];
     $password = $_POST['pass']; 
     $entidad = $_POST['entidad']; 
-
+    $tipo_user = $_POST['tipo_user']; 
+    
     // Preparar la consulta SQL para insertar los datos en la tabla de usuarios (ajusta el nombre de la tabla según tu base de datos)
     $sql = "INSERT INTO user (documento, nombre_user,userName,tipo_user,email_user, pass_user, empresaUser, sede) 
     VALUES ('$documento','$nombreUsuario','$nombreUsuario','1', '$email', '$password','1','$entidad')";
