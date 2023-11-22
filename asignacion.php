@@ -218,7 +218,7 @@ $idUser = $_SESSION['idUser'];
                                             include 'includes/conTest.php';
 
                                             // Consulta SQL para obtener los datos de la tabla nuevaAsignacion
-                                            $sql_asignacion = "SELECT na.id_documento,na.id_courier,na.id_dependencia, na.fecha_asignacion, na.estado_asignacion, nd.codigo, u.nombres as nombreCourier FROM nuevaAsignacion na inner join nuevoDocumento nd on na.id_documento=nd.id inner join users u on u.user_id=na.id_courier";
+                                            $sql_asignacion = "SELECT na.id_documento,na.id_courier,na.id_dependencia, na.fecha_asignacion, na.estado_asignacion,na.id_user, nd.codigo, u.nombres as nombreCourier FROM nuevaAsignacion na inner join nuevoDocumento nd on na.id_documento=nd.id inner join users u on u.user_id=na.id_courier order by fecha_asignacion desc";
 
                                             $result_asignacion = $conn->query($sql_asignacion);
 
