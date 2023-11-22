@@ -25,7 +25,7 @@
 
                 <li>
                 <?php 
-                if ($tipoUsuario == 1) {
+                if ($_SESSION['tipoUsuario'] == 1) {
                         echo '<a href="nuevo_usuario.php" class="waves-effect">
                             <i class="ri-dashboard-line"></i><span class="badge rounded-pill bg-success float-end">' . $vendidos . '</span>
                             <span>Crear Usuario</span>
