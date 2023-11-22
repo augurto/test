@@ -83,6 +83,7 @@ $idUser = $_SESSION['idUser'];
                                     <h4 class="card-title">Asignar Documento</h4>
 
                                     <form action="includes/crearAsignacion.php" method="POST">
+                                    <input type="hidden" class="form-control" name="user" value="<?php echo $idUser; ?>">
 
                                         <div class="row mb-3">
                                             <label class="col-sm-2 col-form-label">Buscar documento:</label>
